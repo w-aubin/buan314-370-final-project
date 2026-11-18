@@ -28,7 +28,7 @@ The source data, their usage terms, scripts, software versions, and reproduction
 - `docs/index.html`: final offline-capable interactive report (not created yet)
 
 ## Software status
-R 4.6.1; RStudio 2026.11.0+203; tidyverse 2.0.0 installed. `plotly`, `renv`, and `janitor` were absent at the initial audit and have not been verified as installed. Repository is maintained through ChatGPT's GitHub integration; local Git was not required for this setup.
+R 4.6.1; RStudio 2026.11.0+203; tidyverse 2.0.0, plotly 4.12.1, renv 1.3.1, and janitor 2.2.1 verified installed in RStudio (student's package audit). Repository is maintained through ChatGPT's GitHub integration; local Git was not required for this setup.
 
 ## Important cautions
 This repository is public. Do not put confidential health-club details, customer information, passwords, or personally identifying research records here. Any future raw dataset must be reviewed for its redistribution license before committing it.
