@@ -1,0 +1,21 @@
+# Temporary files and operating system clutter
+.DS_Store
+Thumbs.db
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj.user/
+*.tmp
+*.bak
+*~
+scratch/
+.Renviron
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+# Avoid large accidentally committed source files; check sizes before each commit.
+# Gitignore cannot enforce a general 50 MB size limit.
