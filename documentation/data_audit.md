@@ -358,3 +358,16 @@ Official CDC 2024 NHIS Sample Adult frequency codebook (`AGEP_A`, printed page 2
 - 99: don't know, published total 4.
 
 The student's max=99 **does not mean a 99-year-old respondent**. Because 85 includes ages 85+, any revised mean based on code 85 is a top-coded approximation, not the unobserved exact population age. Check R frequencies for these five codes against published totals before approving any cleanup; no original data changed or excluded. Adult respondent survey age distributions are not equivalent to health-club-member age distributions; survey weights are needed for national estimates.
+
+## NHIS 2024 special age codes verified — 2026-11-19
+
+Student ran a read-only frequency table for `AGEP_A` codes 85, 97, 98, and 99 and supplied:
+
+| AGEP_A code | Official interpretation | Observed count |
+|---|---|---:|
+| 85 | 85 years or older (top-coded) | 1,189 |
+| 97 | Refused | 48 |
+| 98 | Not ascertained | 0 |
+| 99 | Don't know | 4 |
+
+All observed counts match the CDC 2024 NHIS Sample Adult codebook counts discussed in the prior verification. Of the 32,629 imported rows, 52 (48+4) have unknown respondent age; 32,577 have `AGEP_A` 18–85, where code 85 means 85+ and not necessarily exactly 85. No data recoding, filtering, or deletion performed. **Pending student approval:** use codes 97/99 as unknown for age-specific summaries (retaining original records) and present code 85 as "85+". Do not interpret the original 99 maximum as an observed age or treat 85 as exact 85 in age means.
