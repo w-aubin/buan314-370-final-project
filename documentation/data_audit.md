@@ -183,3 +183,15 @@ Student ran `aggregate(cbind(AverageFrequency, AttendedClassesAverage) ~ Dropout
 | AttendedClassesAverage, mean weekly classes across enrollment | 0.13035251 | 0.06629515 | 0.06405736 |
 
 Counts from earlier cross-tabulation: Dropout=0 adult n=1,929; Dropout=1 adult n=10,327. Relative to Dropout=0 means, dropout-group visits are about 31.4% lower and class attendance is about 49.1% lower. **These are unadjusted descriptive associations only.** Variables summarize enrollment and may contain future information if used to predict dropout at earlier time points. No causal inference or program-specific effect is warranted. No model fitted, no data altered. Next: preliminary read-only pairwise correlation screen for these two numeric candidates and Dropout before testing timing-safe predictors.
+
+## Preliminary three-variable adult correlation screen — 2026-11-18
+
+Student supplied R output from `round(cor(adult_screen, use = "complete.obs"), 3)` on approved adult sample, **n=12,256**, based on previously verified no-NA summaries.
+
+| Variable | AverageFrequency | AttendedClassesAverage | Dropout |
+|---|---:|---:|---:|
+| AverageFrequency | 1.000 | 0.097 | -0.178 |
+| AttendedClassesAverage | 0.097 | 1.000 | -0.097 |
+| Dropout | -0.178 | -0.097 | 1.000 |
+
+**Preliminary result:** No pair in this three-variable screen reaches the assignment's approximate absolute 0.20 correlation threshold. For the proposed binary target `Dropout`, neither of these engagement variables passes individually. For proposed numeric target `AverageFrequency`, neither `AttendedClassesAverage` nor `Dropout` passes. **Do not declare the entire dataset nonviable yet**: other independently measured predictors have not been screened. All three variables describe activity/outcome over or at the endpoint of enrollment, so even strong correlations may be unsuitable for forecasting future dropout due to temporal leakage. Correlation is not causation, and these are not annual churn statistics. Neither target nor predictor list has been approved; no changes to underlying data.
