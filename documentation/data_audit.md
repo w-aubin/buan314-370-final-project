@@ -375,3 +375,15 @@ All observed counts match the CDC 2024 NHIS Sample Adult codebook counts discuss
 ## NHIS age-handling decision approved — 2026-11-19
 
 The student explicitly approved, for **temporary age-specific summaries only**, treating `AGEP_A` values **18–84** as recorded ages, **85** as the grouped category **85 years or older**, and **97 / 99** as unknown ages excluded from age-specific comparisons. Code **98** has no observed records. All **32,629** raw observations remain intact; no change to the source file, no processed file created, and no automatic changes to outcome variables. Exactly **32,577** survey records have a valid age code from 18 through 85; this includes 1,189 top-coded 85+ respondents. Subsequent age summaries must not treat 85 as an exact age for calculating a true mean, or interpret 99 as age 99. When comparing recorded sex groups, keep clear that SEX_A = 1 means Male, 2 means Female and 7/9 are nonresponse, not male/female.
+
+## NHIS usable-age distribution by respondent sex — 2026-11-19
+
+User ran the read-only approved selection `valid_age_sex <- nhis_raw$AGEP_A %in% 18:85 & nhis_raw$SEX_A %in% c(1,2)` and reported the following unweighted distribution summaries (with age code 85 meaning **85+**, not exactly 85):
+
+| Sex | Usable observations | Q1 | Median | Q3 |
+|---|---:|---:|---:|---:|
+| Male (SEX_A=1) | 14,963 | 36 | 53 | 68 |
+| Female (SEX_A=2) | 17,609 | 38 | 56 | 70 |
+| Total | 32,572 | — | — | — |
+
+Subtracting from original sex counts confirms 22 male and 30 female observations had unusable age codes; 52 age unknown overall, plus 5 with unknown sex, consistent with 32,629 - 32,572 = 57. The friend's club reports medians of 48 (men) and 46 (women), so the NHIS sample's medians are older by 5 and 10 years respectively; the Sport Services adult female median is 24. Populations and age recording contexts differ, so these contrasts **do not establish either dataset represents the business**. No cleaning or saved subsets occurred. Next planned diagnostic: characterize women's strengthening participation across age groups, with the student's approval of age-group boundaries first.
