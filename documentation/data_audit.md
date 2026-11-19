@@ -829,3 +829,19 @@ The official CDC Adult codebook describes `HHX` as a randomly assigned household
 Student ran the read-only `sapply(..., function(data) class(data$HHX)[1])` on the three raw Sample Adult objects. Observed `HHX` class **character** for **2020, 2022, and 2024**. With the prior within-year checks (0 missing, 0 duplicated in each year), these results support retaining `HHX` as text without coercion. No leading-zero loss should be introduced by the proposed processing script. A composite `SRVY_YR + HHX` key is proposed, but its global uniqueness has not yet been checked directly. No raw data or combined dataset modified.
 
 Next read-only check: create *only a temporary vector* containing year-qualified HHX strings across the three objects and verify its length, missing values and duplicates. This is not a dataset append or approval of final harmonization.
+
+## Cross-year identifier verification — 2026-11-19
+
+Student supplied a read-only R check of composite identifiers formed by `paste(SRVY_YR, HHX, sep="_")` and concatenated across the three annual datasets:
+
+| Audit test | Student result |
+|---|---:|
+| Total composite identifiers | **91,848** |
+| Missing identifiers | **0** |
+| Duplicated composite identifiers | **0** |
+
+This confirms unique nonmissing survey-year-qualified identifiers in the proposed three-year population. This is a temporary vector, not a saved row-bound dataset. The original HHX values are stored as character in each year, and SRVY_YR matches the source year.
+
+**Source comparability review:** CDC public-use NHIS 2020, 2022 and 2024 Sample Adult codebooks show the same core question about frequency of leisure-time physical activity specifically intended to strengthen muscles (examples include sit-ups, push-ups and lifting weights). Frequency recode values were independently checked in R against annual codebooks. 2020 had pandemic-era collection changes and annual survey designs should not be conflated; maintain year-specific estimates, and distinguish national population survey data from private health-club records. Original CDC sources: https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2020/Adult-codebook.pdf ; https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2022/adult-codebook.pdf ; https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/adult-codebook.pdf ; https://www.cdc.gov/nchs/nhis/documentation/2020-nhis.html .
+
+**Awaiting authorization for execution:** Proposed script should select the 12 raw columns HHX, SRVY_YR, SEX_A, AGEP_A, STRFREQW_A, MODFREQW_A, VIGFREQW_A, MODMIN_A, VIGMIN_A, WTFA_A, PSTRAT, PPSU; append all 91,848 rows while preserving raw codes; verify per-year counts, uniqueness, and source frequency distributions; write to `data/processed` only after approval. Student has already approved the structure conditionally but has not explicitly approved executing the append.
