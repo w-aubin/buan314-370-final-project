@@ -60,3 +60,15 @@ For NHIS, the 55+ analytical band includes code 85 (top-coded 85+), but excludes
 **Technical safeguards:** verify comparable question wording, variable definitions and special codes across years before combining any rows. Survey weights (e.g. WTFA_A), strata and clusters are essential for national prevalence and inference; age-specific percentages calculated earlier are unweighted pilot checks. For multi-year descriptive trends, calculate **separate weighted estimates for each year**, not a simple average of raw respondents. Pooling years for a model requires its own weights/design decisions and compatible predictors; this is not yet approved. Any time-trend finding remains about activity among U.S. adults, not about membership retention or interest in buying the club's program.
 
 **Status:** 2024 downloaded and inspected. 2020 and 2022 files not yet downloaded. No years chosen and no models fitted.
+
+## Multiyear NHIS feasibility scope approved — November 19, 2026
+
+The student explicitly approved investigating **2020, 2022, and 2024** for a repeated-cross-section trend study of strengthening activity, **without yet selecting the final dataset or combining years**. Begin by checking the 2022 sample-adult codebook and raw file. Preserve the already approved (provisional) age bands 18–24, 25–34, 35–44, 45–54, 55+, with 45–54 pending confirmation from the business contact. Do not imply these survey respondents are the club's members.
+
+Official CDC sources:
+- 2022 NHIS annual documentation: https://www.cdc.gov/nchs/nhis/documentation/2022-nhis.html
+- 2022 Sample Adult codebook: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2022/adult-codebook.pdf
+- 2022 Sample Adult CSV archive: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2022/adult22csv.zip
+- 2020 NHIS annual documentation: https://www.cdc.gov/nchs/nhis/documentation/2020-nhis.html
+
+The official 2022 codebook documents **`STRFREQW_A`**, frequency of strengthening physical activity (times per week), with codes `0` = less than once weekly; `1–28` = sessions per week; `94` = never; and `95–99` = special responses. Publisher's counts: **27,651** adults, including 802 less-than-weekly, 9,523 weekly numeric, 16,228 never, 60 extreme, 177 unable, 24 refused, 789 not ascertained, 48 don't know. These coding categories match the **code values and descriptions** in the 2024 codebook (whose printed variable label is `STRFREQ_A` while the imported 2024 CSV used `STRFREQW_A`). Exact question wording, year-specific weighting, and consistency of candidate regression predictors are not yet fully checked, so treat cross-year comparability as provisional. Survey trends require survey weights and design-aware estimates; 2020 had pandemic-era changes and a revised adult file. The 2022 dataset has not yet been downloaded or inspected by the student.
