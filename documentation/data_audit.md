@@ -737,3 +737,7 @@ Student also provided a read-only `AGEP_A` special-code frequency table: **85=1,
 Source: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2022/Adult-codebook.pdf (SEX_A and AGEP_A tables, pages 17–18). Survey source code values are now cross-checked for all three years 2020, 2022 and 2024; the codes' agreement does not establish identical survey wording or year-to-year weights. No raw data altered, no appended file created.
 
 Next verification: confirm design-weight fields WTFA_A, PSTRAT and PPSU exist in all three survey-year datasets. These are relevant for survey-weighted descriptive trends and nationally representative inferences, though the course's required exploratory Pearson correlation screen was unweighted.
+
+## NHIS three-year survey-design column presence — 2026-11-19
+
+Student ran an in-memory, read-only check that `WTFA_A` (Sample Adult final weight), `PSTRAT` (public-use stratum), and `PPSU` (public-use PSU) are present in each of `nhis20_raw` (2020), `nhis22_raw` (2022) and `nhis_raw` (2024). **All nine tests returned TRUE.** This establishes names only—not valid positive weight values or correct combined survey design. Survey-weighted proportions will require applying the proper within-year weights; a pooled design must explicitly address survey-year-specific stratum/PSU labels and weighting. Next do read-only weight-missing/positive, stratum/PSU-missing and distinct-count checks on all years. No changes, append, or modeling performed.
