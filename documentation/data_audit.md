@@ -695,3 +695,17 @@ Student successfully imported `adult20.csv` directly from the unchanged `data/ra
 Student ran a read-only `sapply()` test of `c("SEX_A","AGEP_A","STRFREQW_A") %in% names(...)` on `nhis20_raw`, `nhis22_raw`, and `nhis_raw`. All nine tests returned **TRUE**. All three raw datasets remain unmodified and uncombined, with published row totals 31,568 (2020), 27,651 (2022), and 32,629 (2024), summing to **91,848**. Same column names do not by themselves establish comparability.
 
 Additional source verification: CDC revised 2020 Sample Adult codebook (document version August 15, 2022) describes `STRFREQW_A` as strength-training frequency in times/week and publishes code totals **0=835; 1–28=11,110; 94=18,580; 95=54; 96=227; 97=21; 98=653; 99=88** (n=31,568). Source: https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2020/Adult-codebook.pdf (printed p.479). Next read-only step is to check the imported 2020 raw-code distribution against these counts; after that, inspect sex/age coding and weighted trend compatibility. No 2020 recodes or final dataset appends approved yet.
+
+## 2020 NHIS strengthening frequency verified from student raw-code table — 2026-11-19
+
+Student supplied `table(nhis20_raw$STRFREQW_A, useNA="ifany")` with counts for all present values. Summed counts by published response class:
+
+| Source code(s) | Meaning | Student observed count | Percent of all 31,568 (unweighted) |
+|---|---|---:|---:|
+| 0 | Less than once per week | 835 | 2.6% |
+| 1–28 | Once weekly or more | 11,110 | 35.2% |
+| 94 | Never | 18,580 | 58.9% |
+| 95–99 | Extreme/Unable/Refused/Not ascertained/Don't know | 1,043 | 3.3% |
+| **Total** | | **31,568** | **100.0%** |
+
+Detailed special codes: 95=54; 96=227; 97=21; 98=653; 99=88. Counts reconcile and match previously noted CDC 2020 codebook frequencies. For the previously approved candidate target **strength ≥2 times weekly**, the observed 2020 code counts imply 9,345 "yes" (2–28), 20,180 "no" (0,1,94), and 1,043 special/unknown. This derived count has **not yet been independently verified by a 2020 R recode**. The 2020/2022/2024 response codes appear consistent at this level, but exact question wording, age/sex distributions, survey weights, and year harmonization remain unverified. These are raw sample counts, not weighted national trends. No raw source modified or data appended.
