@@ -715,3 +715,15 @@ Detailed special codes: 95=54; 96=227; 97=21; 98=653; 99=88. Counts reconcile an
 Student's read-only 2020 `SEX_A` frequencies: **1=14,521; 2=17,045; 7=1; 9=1** (n=31,568), matching official 2020 Sample Adult codebook (p.19). `tail(sort(unique(nhis20_raw$AGEP_A)),12)` returned **76,77,78,79,80,81,82,83,84,85,97,99**. Official CDC revised 2020 Sample Adult codebook, p.17 (https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2020/Adult-codebook.pdf) defines `AGEP_A` as age top-coded: **18–84** actual ages (published count 30,315), **85** = ages 85+ (1,183), **97** = refused (63), **98** = not ascertained (0), **99** = don't know (7). These are **source-published expected counts**, not yet verified against user's 2020 age frequency table. Never interpret code 99 as a respondent aged 99.
 
 Next read-only check: explicit tabulation of `AGEP_A` values 85/97/98/99 in `nhis20_raw`. The user's prior decision for 2024 age handling is a proposed harmonized rule, not automatically applied to 2020 until the codes match and a harmonization plan is approved. No raw source changed.
+
+## 2020 NHIS special and top-coded ages independently verified — 2026-11-19
+
+The student ran a **read-only** table of `nhis20_raw$AGEP_A` codes 85, 97, 98 and 99 using `factor(..., levels=c(85,97,98,99))` and reported **85 = 1,183; 97 = 63; 98 = 0; 99 = 7**. These exactly match the official 2020 CDC Sample Adult codebook counts checked in the prior step.
+
+- `85`: age 85 years or older (**valid top-coded age**, not an unknown response).
+- `97`: refused (63).
+- `98`: not ascertained (0).
+- `99`: don't know (7).
+- Exactly **70** of the 31,568 original respondent rows have unavailable age (97/99); **31,498** have a usable age code of 18–85, including the top-coded age-85 category.
+
+This completes the **2020 age-code frequency verification**, not the whole cross-year comparability test. No R recoding, original-file editing, or harmonization was performed. Next is to inspect the corresponding 2022 sex/age code distributions.
