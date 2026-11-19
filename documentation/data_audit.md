@@ -430,3 +430,18 @@ User supplied the read-only R `addmargins(female_strength_by_age)` table, using 
 Column totals match earlier female counts exactly. Unweighted at-least-weekly fractions of *all* women in each known age band (including special response cases in denominators) are approximately 40.5%, 41.4%, 40.3%, 34.9%, and 25.9%, respectively. These are exploratory percentages, not survey-weighted national population estimates. The 45–54 analytical category remains a **student-approved provisional correction** to the operator's overlapping reported labels; do not present it as officially confirmed.
 
 Next: compute entire within-age-group percent table in R from `female_strength_by_age` using `prop.table(..., margin=1)`, showing no claims of program demand or effectiveness. The eventual report should use NHIS survey weights and acknowledge general population versus health-club membership differences. No original NHIS data edited or processed file written.
+
+## Female weekly strengthening percentages by company-aligned age groups — 2026-11-19
+
+Student ran `round(prop.table(female_strength_by_age, margin=1)*100, 1)` on previously approved **in-memory**, unweighted NHIS 2024 strength categories; supplied:
+
+| Age group | At least weekly | Less than weekly | Never | Special response |
+|---|---:|---:|---:|---:|
+| 18–24 | 40.5% | 6.3% | 50.8% | 2.3% |
+| 25–34 | 41.4% | 5.0% | 50.1% | 3.5% |
+| 35–44 | 40.3% | 4.0% | 52.8% | 2.8% |
+| 45–54 | 34.9% | 2.8% | 59.3% | 3.0% |
+| 55+ | 25.9% | 1.4% | 69.1% | 3.6% |
+| Unknown age | 33.3% | 0.0% | 50.0% | 16.7% |
+
+Within-group percentages agree with prior exact counts; small deviations from 100% come from rounding. The weekly participation percentage gap between women aged 25–34 and 55+ is 15.5 percentage points (41.4 vs 25.9); never-participation gap is 19.0 percentage points (69.1 vs 50.1). Because these are unweighted sample percentages and include special responses in the denominators, do not present them as US prevalence. These rates do not measure fitness club membership, demand for paid introductory classes, or member retention. Age bands are provisional: business source originally said 45–59 and 55+, with overlap; 45–54 is a student-approved working correction. No raw data modified. The next stage is a read-only scan for independent candidate predictors and two outcome targets before assessing the professor's |r| ≈ 0.20 requirement.
