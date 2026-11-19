@@ -805,3 +805,9 @@ This verifies **30 of 30 class checks**, meaning no initial coercion is needed s
 ## Provisional harmonization approved, not executed — November 19, 2026
 
 Student approved the *structure* for a narrow NHIS 2020/2022/2024 append: all **91,848** source observations retained, 10 verified source fields, survey-year value, source-row audit key, and previously approved derived response/age groups kept separate. Raw data must remain unchanged. The CDC's documentation identifies the Sample Adult Interview file as suitable for trend analyses, while special 2020 COVID-era collection could affect comparability (https://www.cdc.gov/nchs/nhis/documentation/2020-nhis.html). CDC codebooks include `SRVY_YR`, so inspect its presence and values before creating a second year column. Do not simply concatenate the 52 PSTRAT codes and PPSU codes across years as if they uniquely identify sampling units. Source documentation, year-specific weights, age-band confirmation, meaningful outcome descriptions, and explicit approval remain prerequisites for producing a combined file.
+
+## Three-year survey-year identifier verification — 2026-11-19
+
+Student ran the read-only `year_check` to inspect `SRVY_YR` in the three imported NHIS Sample Adult objects. Observed distinct values: `nhis20_raw`: only **2020**; `nhis22_raw`: only **2022**; `nhis_raw`: only **2024**. All three datasets contain this field and it matches the archive year. Therefore **reuse the original `SRVY_YR`** instead of creating a redundant year column. Presence/distinct-year checks do not establish respondent identifiers or the validity of pooling survey-design IDs. No rows combined or modified.
+
+Next: inspect whether `HHX` (public-use household identifier) exists, is nonmissing, and uniquely identifies one Sample Adult row within each survey year; if not, plan a separate reproducible year-specific row key. Never assume `HHX` is unique across years.
