@@ -345,3 +345,16 @@ Student ran `addmargins(strength_by_sex)` using the previously approved **in-mem
 | **Total** | **11,757** | **970** | **18,783** | **1,119** | **32,629** |
 
 Row and column sums reconcile and match earlier separate original-code frequency tables. Women's unweighted at-least-weekly percentage ≈32.3% (5,694/17,639), men's ≈40.5% (6,062/14,985); female never ≈61.6% and male never ≈52.8%. These are **unweighted sample shares** rather than nationally representative estimates; correct weighting is required for population claims. The 95–99 special responses remain segregated; zero source rows modified or discarded. Next check is read-only inspection of `AGEP_A` codes before any age-group definition or stratification.
+
+## NHIS 2024 age coding and provisional age summary — 2026-11-19
+
+Student's read-only R output for `AGEP_A` (n=32,629): min 18, Q1 37, median 55, mean 53.45, Q3 69, max 99; unique highest codes reported: 78–85, 97, 99. **These descriptive statistics are provisional** because 97 and 99 are non-age responses and 85 is top-coded.
+
+Official CDC 2024 NHIS Sample Adult frequency codebook (`AGEP_A`, printed page 21; https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/Adult-codebook.pdf ) defines:
+- 18–84: valid exact ages, published total 31,388.
+- 85: 85 years or older (top coded), published total 1,189.
+- 97: refused, published total 48.
+- 98: not ascertained, published total 0.
+- 99: don't know, published total 4.
+
+The student's max=99 **does not mean a 99-year-old respondent**. Because 85 includes ages 85+, any revised mean based on code 85 is a top-coded approximation, not the unobserved exact population age. Check R frequencies for these five codes against published totals before approving any cleanup; no original data changed or excluded. Adult respondent survey age distributions are not equivalent to health-club-member age distributions; survey weights are needed for national estimates.
