@@ -461,3 +461,7 @@ User authorized expanding the viability research to **2020, 2022 and 2024**, beg
 ## 2022 NHIS Sample Adult import verified — 2026-11-19
 
 Student ran the CDC-recommended base-R import of `adult22.csv` from the untouched `data/raw/nhis/adult22csv.zip`, with `stringsAsFactors=FALSE`, and reported `dim(nhis22_raw)` = **27,651 rows × 637 columns**. The row count matches the published 2022 NHIS Sample Adult total. For comparison, the previously verified 2024 imported file `nhis_raw` contains **32,629 rows × 630 columns**. Different column counts are expected possibilities across survey years, and the files have **not** been appended or harmonized. Next: inspect actual field-name availability for sex, age and weekly strength-training frequency in both imported files before checking coded response distributions. All operations so far are read-only.
+
+## 2022 versus 2024 NHIS core-column presence — 2026-11-19
+
+The student ran a read-only `key_variables %in% names(...)` comparison against imported `nhis22_raw` and `nhis_raw`. All three candidate fields — **`SEX_A`**, **`AGEP_A`**, and **`STRFREQW_A`** — were present (`TRUE`) in **both 2022 and 2024** files. This confirms column-name presence, **not** complete comparability or coding equivalence. The next check is the original 2022 `STRFREQW_A` frequency distribution against the 2022 published codebook, followed by age/sex code confirmation. No source files edited or years appended.
