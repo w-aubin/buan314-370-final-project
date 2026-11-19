@@ -32,3 +32,21 @@ A full-service health-club operator may wish to prioritize fitness and wellness 
 **Important:** Published sports-facility data include variables computed over the entire enrollment or final two months. Do not use these to predict an earlier event. Age is recorded at endpoint rather than signup. Some activity descriptions in the paper appear inconsistent; confirm categories from the source and actual file. No association establishes that an untested program prevents churn.
 
 **ATUS:** The student has five 2025 ATUS source files stored locally in `data/raw` and began read-only ZIP inspection. Those files remain available but are not yet the chosen project data.
+
+
+## Provisional alignment to operator's average membership age distribution — 2026-11-19
+
+The club contact provided the following **average per-club** membership summary. These figures are company-provided context and must not be represented as NHIS observations or publicly verified national estimates:
+
+| Supplied age-band label | Average members per club | Supplied share |
+|---|---:|---:|
+| 18–24 | 348 | 5% |
+| 25–34 | 1,005 | 16% |
+| 35–44 | 1,208 | 19% |
+| 45–59 | 1,701 | 26% |
+| 55+ | 2,206.5 | 34% |
+| Total | 6,468.5 | 100% |
+
+**Original labels overlap at 55–59.** The student explicitly approved **provisional analytical bands** 18–24, 25–34, 35–44, **45–54**, and 55+ on 2026-11-19, pending confirmation by the business contact. The 45–54 band is an assumption, **not an edit to the source summary**. Do not silently change or conflate original and provisional descriptions. When confirmed, update the grouping code and rerun affected counts, charts and comparisons.
+
+For NHIS, the 55+ analytical band includes code 85 (top-coded 85+), but excludes AGEP_A 97/99 (unknown). The company summary is aggregate context only; do not merge it row-by-row into NHIS. No dataset selected or modeled.
