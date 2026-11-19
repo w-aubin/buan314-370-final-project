@@ -316,3 +316,18 @@ Totals exactly match the official 2024 NHIS Sample Adult frequency table: https:
 ## NHIS participation categories — student-approved preliminary plan (2026-11-19)
 
 The student approved a **read-only, in-memory exploratory classification** of `STRFREQW_A`: 94 = Never; 0 = Less than weekly; 1–28 = At least weekly; 95–99 = Special response, retaining their original codes separately in the raw data. No recodes, exclusions, or updates to `nhis_raw` or the ZIP have been performed yet. The classification is intended solely for descriptive comparisons and viability checks, not as an approved regression target or treatment of missingness. Use the source codes, include sex categories 7/9 in checks, and report within-sex denominators clearly. The `96 = unable` category stays distinct in the original source and must not be described as a refusal.
+
+## NHIS preliminary strengthening activity by sex — student-reported percentages (2026-11-19)
+
+The student supplied the **within-sex percentage table** from the approved read-only in-memory categorization of 2024 NHIS `STRFREQW_A`. The code-to-group mapping remains: 94 = Never, 0 = Less than weekly, 1–28 = At least weekly, 95–99 = Special response. No raw values overwritten.
+
+| SEX_A | At least weekly | Less than weekly | Never | Special response |
+|---|---:|---:|---:|---:|
+| 1 (Male) | 40.5% | 3.2% | 52.8% | 3.5% |
+| 2 (Female) | 32.3% | 2.8% | 61.6% | 3.3% |
+| 7 (Sex refused) | 33.3% | 0.0% | 66.7% | 0.0% |
+| 9 (Sex don't know) | 0.0% | 50.0% | 50.0% | 0.0% |
+
+Female-minus-male: **-8.2 percentage points** for at least weekly; **+8.8 percentage points** for never. These percentages are **unweighted within recorded-sex groups**. They do not establish demand for a paid class, retention effects, or population rates. Very small sex code 7/9 groups (n=3, n=2), so do not interpret their percentages substantively.
+
+**Outstanding acceptance check:** The student has not yet supplied the **raw counts** from `print(strength_by_sex)`. Verify exact cell counts and that they sum to n=32,629 before recording this checkpoint as fully passed. No modifications to data, no final dataset selected, no model fitted.
