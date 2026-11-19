@@ -685,3 +685,7 @@ Student ran `list.files("data/raw/nhis")` and verified the local source folder c
 - `adult24csv.zip`
 
 These are the student's verified filenames; capitalization and single quotes matter if referenced in future scripts. Files being present does not alone validate their content or checksums. Already-verified 2020 ZIP member is `adult20.csv` (30,453,241 uncompressed bytes). Next: read-only base R import of `adult20.csv` within its ZIP and `dim()` check against the publisher's 31,568 sample-adult rows. No datasets have been appended or raw contents modified.
+
+## 2020 NHIS Sample Adult import verified — 2026-11-19
+
+Student successfully imported `adult20.csv` directly from the unchanged `data/raw/nhis/adult20csv.zip` archive with base R `read.csv()` and reported `dim(nhis20_raw)` = **31,568 rows × 617 columns**. This matches the official published 2020 Sample Adult row count; column count is as observed in the import. Already verified: 2022 `nhis22_raw` = **27,651 × 637** and 2024 `nhis_raw` = **32,629 × 630**. If appended after full compatibility and scope checks, the **potential combined original sample size would be 91,848** (31,568 + 27,651 + 32,629), subject to the final harmonization plan. No appending, harmonization, row deletion, or edits to raw files have occurred. Next: check presence of `SEX_A`, `AGEP_A`, and `STRFREQW_A` in all three years before inspecting 2020 source-code frequencies against its codebook.
