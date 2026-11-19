@@ -811,3 +811,15 @@ Student approved the *structure* for a narrow NHIS 2020/2022/2024 append: all **
 Student ran the read-only `year_check` to inspect `SRVY_YR` in the three imported NHIS Sample Adult objects. Observed distinct values: `nhis20_raw`: only **2020**; `nhis22_raw`: only **2022**; `nhis_raw`: only **2024**. All three datasets contain this field and it matches the archive year. Therefore **reuse the original `SRVY_YR`** instead of creating a redundant year column. Presence/distinct-year checks do not establish respondent identifiers or the validity of pooling survey-design IDs. No rows combined or modified.
 
 Next: inspect whether `HHX` (public-use household identifier) exists, is nonmissing, and uniquely identifies one Sample Adult row within each survey year; if not, plan a separate reproducible year-specific row key. Never assume `HHX` is unique across years.
+
+## Sample Adult HHX uniqueness verified, each year — 2026-11-19
+
+Student ran a read-only `check_id()` on `HHX` in imported 2020, 2022, and 2024 Sample Adult data. Each annual file has exactly one household identifier per observed Sample Adult record and no missing IDs:
+
+| Year | Rows | Missing HHX | Duplicated HHX within year |
+|---|---:|---:|---:|
+| 2020 | 31,568 | 0 | 0 |
+| 2022 | 27,651 | 0 | 0 |
+| 2024 | 32,629 | 0 | 0 |
+
+The official CDC Adult codebook describes `HHX` as a randomly assigned household number unique to a household. The IPUMS NHIS documentation clarifies that it is only uniquely identifiable **across surveys when combined with year**. Sources: https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2024/Adult-codebook.pdf and https://nhis.ipums.org/nhis-action/variables/HHX . Hence use `SRVY_YR + HHX` as the provisional combined Sample Adult record key. This preserves the original HHX strings, including possible leading characters/zeros, instead of converting them to numeric. No 91,848-row append or processed file was created. Next verify that HHX is imported as character in all three years before implementing a combined key.
