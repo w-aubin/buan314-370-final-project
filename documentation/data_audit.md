@@ -212,3 +212,20 @@ Student reported R `top_correlations()` based on numeric fields of the adult (Ag
 - `NumberOfFrequenciesClass1` discretizes total visits and is also a retrospective measure.
 
 **Decision:** Do not select the dataset or predictors yet. Next is a **read-only limited correlation screen for characteristics and program-category flags** rather than the mechanically related and endpoint-dependent variables. Original definitions: Pinheiro & Cavique, *Data in Brief* (2021), Table 1 and note (b) below Table 3, https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/ ; licensed source https://data.mendeley.com/datasets/yprk4jdgnv/1 . No raw files modified, models fitted, or feature selection approved.
+
+## Member and activity-variable correlation screen (adult scope) — 2026-11-18
+
+Student supplied the following `cor()` results for 12,256 records with `Age >= 18`:
+
+| Candidate variable | Dropout | AverageFrequency |
+|---|---:|---:|
+| Age | -0.178 | 0.097 |
+| FitnessActivities | 0.050 | 0.092 |
+| WaterActivities | -0.069 | 0.025 |
+| DanceActivities | NA | NA |
+| RacketActivities | 0.056 | -0.047 |
+| CombatActivities | -0.022 | -0.147 |
+| NumberOfActivities | -0.080 | 0.022 |
+| HasReferences | -0.010 | 0.006 |
+
+**Assessment:** No finite correlation in this restricted predictor screen reaches the professor's approximate |r| >= 0.20 threshold. Correlations over 0.20 in the earlier full numeric screen involve retrospectively measured, endpoint-dependent, or mechanically derived variables. `DanceActivities` yielded undefined correlations; since the previous `is.na()` audit found no missing values, zero variance is suspected but still requires a frequency check. Do not mistake `NA` in the *correlation* for missing source values. Age is an endpoint-age measure, not necessarily a predictor at enrollment. This screen alone does not establish the usefulness, ineffectiveness, or causal impacts of programs. **No dataset approval, predictor choice, data cleaning, or model fitting has occurred.**
