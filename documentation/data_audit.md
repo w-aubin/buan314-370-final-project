@@ -124,3 +124,21 @@ The overall total remains **14,942** with **2,974** non-dropout and **11,968** d
 The student explicitly approved evaluating **both female and male records with recorded Age >= 18**, emphasizing women and retaining men as a comparison population. Existing read-only counts imply **n = 12,256** (female **7,491**, male **4,765**); under-18 records = **2,686**. This is a proposed analytical scope for data viability and later analysis, **not a data cleaning action**. The source `data/raw/DadosV3.csv` remains untouched; no processed file or row removal has been performed.
 
 **Critical interpretation:** The published `Age` measure is recorded at the member's endpoint, so `Age >= 18` indicates adulthood **at that recorded reference date**, not necessarily at enrollment. The student's belief that most health clubs require members to be 18 is an assumption, not a dataset finding or a universal entry rule. Confirm eligibility policy for the target club if it becomes relevant.
+
+## Adult recorded ages by gender — 2026-11-18
+
+Student ran `by(sports_raw$Age[sports_raw$Age >= 18], sports_raw$Gender[sports_raw$Age >= 18], summary)`:
+
+| Statistic | Female adults | Male adults |
+|---|---:|---:|
+| n (from previous approved adult scope) | 7,491 | 4,765 |
+| Min | 18 | 18 |
+| Q1 | 21 | 21 |
+| Median | **24** | **25** |
+| Mean | 29.77 | 29.92 |
+| Q3 | 35 | 35 |
+| Max | 86 | 87 |
+
+Business informant separately reported medians of 46 (women) and 48 (men) across their organization's club memberships; therefore adult medians differ by 22 and 23 years respectively. These data describe different geographic/organizational populations and potentially different measurement contexts; no representativeness established. The source dictionary identifies `Age` at membership endpoint, not necessarily at enrollment. Adult-only scope remains provisional for the ongoing feasibility test.
+
+Potential numeric candidate definitions from source dictionary (not yet selected): `AverageFrequency` = average weekly visits over entire enrollment; `AttendedClassesAverage` = average classes per week. **Both are retrospective aggregate variables**, so timing and leakage require checking if intended as forecasting predictors. Source: Pinheiro and Cavique, *Data in Brief* 36 (2021), DOI 10.1016/j.dib.2021.107054.
