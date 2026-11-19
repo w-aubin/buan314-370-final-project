@@ -83,3 +83,11 @@ Student supplied `table(sports_raw$AgeClass, sports_raw$Gender)`:
 | **Total** | **8,931** | **6,011** | **14,942** |
 
 **Observed:** 7,057 of 8,931 female records (79.0%) fall into under-20 or 20–34 age classes; 1,874 (21.0%) are age 35 or older according to these codes. Among women, 218 (2.4%) fall in 65+. The operator described a female membership median age of 46, so transferability is a concern; no claims about sampling representativeness are justified yet. Under-20 respondents may include minors; investigate suitability before research scope is chosen. Still waiting on output of `summary(sports_raw$Age)` to establish observed numeric age distribution. Do not re-bin or modify source data without approval.
+
+## Numeric age summary — 2026-11-18
+
+Student reported `summary(sports_raw$Age)`: **Min 0**, **Q1 19**, **Median 23**, **Mean 26.02**, **Q3 31**, **Max 87** (n = 14,942). The median age of the full dataset is not a female-only median.
+
+According to Pinheiro and Cavique's published dictionary, `Age` is measured as of **2019-10-31 for non-dropouts**, or as of **EnrollmentFinish for dropouts**. It is not necessarily the age at enrollment or a valid earlier-date predictor. Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/ (Table 1).
+
+A recorded minimum of 0 requires investigating how many child records exist; do **not** interpret it as an error, delete, filter, or recode observations without student approval. Next: tabulate age under 18 and age exactly 0 by gender.
