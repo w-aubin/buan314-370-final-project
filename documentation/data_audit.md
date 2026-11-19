@@ -823,3 +823,9 @@ Student ran a read-only `check_id()` on `HHX` in imported 2020, 2022, and 2024 S
 | 2024 | 32,629 | 0 | 0 |
 
 The official CDC Adult codebook describes `HHX` as a randomly assigned household number unique to a household. The IPUMS NHIS documentation clarifies that it is only uniquely identifiable **across surveys when combined with year**. Sources: https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2024/Adult-codebook.pdf and https://nhis.ipums.org/nhis-action/variables/HHX . Hence use `SRVY_YR + HHX` as the provisional combined Sample Adult record key. This preserves the original HHX strings, including possible leading characters/zeros, instead of converting them to numeric. No 91,848-row append or processed file was created. Next verify that HHX is imported as character in all three years before implementing a combined key.
+
+## HHX storage-class validation — 2026-11-19
+
+Student ran the read-only `sapply(..., function(data) class(data$HHX)[1])` on the three raw Sample Adult objects. Observed `HHX` class **character** for **2020, 2022, and 2024**. With the prior within-year checks (0 missing, 0 duplicated in each year), these results support retaining `HHX` as text without coercion. No leading-zero loss should be introduced by the proposed processing script. A composite `SRVY_YR + HHX` key is proposed, but its global uniqueness has not yet been checked directly. No raw data or combined dataset modified.
+
+Next read-only check: create *only a temporary vector* containing year-qualified HHX strings across the three objects and verify its length, missing values and duplicates. This is not a dataset append or approval of final harmonization.
