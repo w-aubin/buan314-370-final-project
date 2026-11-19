@@ -465,3 +465,17 @@ Student ran the CDC-recommended base-R import of `adult22.csv` from the untouche
 ## 2022 versus 2024 NHIS core-column presence — 2026-11-19
 
 The student ran a read-only `key_variables %in% names(...)` comparison against imported `nhis22_raw` and `nhis_raw`. All three candidate fields — **`SEX_A`**, **`AGEP_A`**, and **`STRFREQW_A`** — were present (`TRUE`) in **both 2022 and 2024** files. This confirms column-name presence, **not** complete comparability or coding equivalence. The next check is the original 2022 `STRFREQW_A` frequency distribution against the 2022 published codebook, followed by age/sex code confirmation. No source files edited or years appended.
+
+## 2022 NHIS weekly strength frequency codes validated — 2026-11-19
+
+Student reported read-only R `table(nhis22_raw$STRFREQW_A, useNA="ifany")` with exact frequencies:
+
+```text
+0:802; 1:1591; 2:2033; 3:2332; 4:964; 5:824; 6:196; 7:1445;
+8:1; 9:2; 10:5; 11:3; 12:3; 13:1; 14:73; 20:5; 21:33; 23:2; 28:10;
+94:16228; 95:60; 96:177; 97:24; 98:789; 99:48
+```
+
+Grouped totals: 0 less-than-weekly **802**; 1–28 weekly numeric **9,523**; 94 never **16,228**; 95–99 special **1,098**; **total 27,651**. These match publisher codebook totals. Unweighted percentages of all respondents: weekly **34.4%**, less-than-weekly **2.9%**, never **58.7%**, special **4.0%**. 2024 counterparts: weekly **36.0%**, less-than-weekly **3.0%**, never **57.6%**, special **3.4%**, using 2024 n=32,629 and previously verified counts. These are not survey-weighted trends, not sex-specific results, and do not indicate gym memberships.
+
+Code categories are consistent at a first pass; still need verify exact question wording, sampling weights, and year-specific codebook definitions before appending.
