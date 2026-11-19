@@ -600,3 +600,21 @@ Student supplied an explicit post-approval check of in-memory vectors `moderate_
 All counts exactly match the independent expectations from previously verified 2024 source-code frequencies. This completes the binary *predictor construction* count checkpoint. Previously observed pairwise correlations with the approved preliminary binary strengthening twice-weekly target remain **r=+0.3486380** (moderate, n=31,238) and **r=+0.4517252** (vigorous, n=31,315), exceeding the professor's approximate absolute 0.20 threshold. The required separate numeric regression target and its correlations remain untested. No original data overwritten, cleaned, merged, or dropped.
 
 Next: inspect documented candidate **numeric outcome variables** and their special-value coding in the 2024 adult file before choosing a numeric target. Do not pick a variable based solely on high correlation, or use variables that are merely transformations of an identical binary target.
+
+## 2024 NHIS duration screening of candidate numeric targets — 2026-11-19
+
+Student ran read-only `check_minutes()` on 2024 `MODMIN_A` and `VIGMIN_A`:
+
+| Category | MODMIN_A | VIGMIN_A |
+|---|---:|---:|
+| Valid coded minutes 1–720 | 22,687 | 11,265 |
+| 996 Extreme | 12 | 3 |
+| 997 Refused | 5 | 1 |
+| 998 Not ascertained | 6 | 2 |
+| 999 Don't know | 87 | 41 |
+| NA / not in question universe | 9,832 | 21,317 |
+| **Total** | **32,629** | **32,629** |
+
+All counts match the official 2024 CDC NHIS Sample Adult Codebook, **p. 473 (MODMIN_A)** and **p. 479 (VIGMIN_A)**: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/adult-codebook.pdf. These variables measure **reported duration of leisure-time moderate/vigorous physical activity in minutes**, standardized from source duration units; their question universe consists of respondents who do the corresponding activity. These are **not measures of total weekly minutes**. The substantial `NA` counts primarily reflect restricted survey question universes (not necessarily file corruption), which matter for a descriptive or regression population definition.
+
+Still no **numeric target** selected, no 0.20 screen for this target, and no automatic recoding or exclusions approved. Next: read-only `summary()` of observed valid-duration values (1–720) for each variable, keeping originals untouched. If selecting an outcome later, explicitly define population, denominator and any handling of never/nonresponse.
