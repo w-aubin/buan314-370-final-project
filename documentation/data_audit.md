@@ -253,3 +253,30 @@ Student executed a base-R `read.csv()` import of `adult24.csv` through `unz("dat
 User ran a read-only grep across `names(nhis_raw)` and received the exact matches: `SPOUSESEX_A`, `PRTNRSEX_A`, `STRFREQW_A`, `SEX_A`, and `AGEP_A`. The **exact strengthening frequency column in the student's imported 2024 file is `STRFREQW_A`**, not `STRFREQ_A`; preserve the spelling in all next R checks. `SEX_A` and `AGEP_A` are the respondent characteristics to inspect; spouse/partner-sex columns are not the respondent's own sex. The dataset is in memory and unchanged.
 
 Potential coding pitfall: strengthening-frequency recodes include special numeric codes for never, unable, and nonresponse, which are not literal numbers of weekly training sessions. Do not calculate the mean or correlations until verifying the **exact 2024 codebook and observed code frequencies**. Next read-only check: `table(nhis_raw$SEX_A, useNA="ifany")` and `table(nhis_raw$STRFREQW_A, useNA="ifany")`, with `AGEP_A` inspected subsequently. Official documentation landing page: https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html .
+
+## 2024 NHIS strengthening activity coding verified — 2026-11-19
+
+Student supplied complete read-only R frequency tables. The values match the **official CDC 2024 NHIS Sample Adult codebook** (version 18 June 2025), for `SEX_A` (codebook p.19) and the weekly strengthening frequency field imported as **`STRFREQW_A`** (codebook p.483); original source https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/Adult-codebook.pdf .
+
+| SEX_A | Publisher label | R count |
+|---|---|---:|
+| 1 | Male | 14,985 |
+| 2 | Female | 17,639 |
+| 7 | Refused | 3 |
+| 9 | Don't know | 2 |
+
+Sex code 8 (not ascertained) has 0 observations.
+
+| STRFREQW_A code | Publisher label | R count |
+|---|---|---:|
+| 0 | Less than once per week | 970 |
+| 1–28 | 1–28 times per week (aggregated) | 11,757 |
+| 94 | Never | 18,783 |
+| 95 | Extreme value | 61 |
+| 96 | Unable to do this type of activity | 158 |
+| 97 | Refused | 32 |
+| 98 | Not ascertained | 815 |
+| 99 | Don't know | 53 |
+| **Total** | | **32,629** |
+
+**Major coding caveat**: `94` denotes never; `95` extreme; `96` unable; `97` refused; `98` not ascertained; `99` don't know. Neither `94–99` nor `0` should be read as literal counts of exercise episodes (`0` denotes *less than once per week*, not necessarily never). Do not calculate numeric means or correlations on these original codes. The sample's unweighted `94` proportion is 57.57%; this is not the female-specific proportion and not a weighted population estimate. No recoding, exclusions or processed file created. Download and preserve the 2024 codebook locally before proceeding with any derived variables.
