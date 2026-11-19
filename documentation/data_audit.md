@@ -560,3 +560,15 @@ This preserves the distinction between **never** and **infrequent** activity for
 After explicit student approval of the source-code mapping, the student created an in-memory integer vector `strength_twice_weekly` from `nhis_raw$STRFREQW_A` without modifying source data. Observed `table(strength_twice_weekly, useNA="ifany")`: `0=21,697`, `1=9,813`, `NA=1,119`, **total=32,629**. These match the independently predicted counts derived from the original source-code frequency table. Valid binary response count = **31,510**; yes fraction among valid = **9,813 / 31,510 = 31.1%** (unweighted). `0` means fewer than two strengthening sessions weekly, not never; special codes 95–99 remain separately identified in source data and missing only in this temporary binary indicator. No rows deleted, no correlation computed, no final dataset selected.
 
 Next request student approval to define separately measured moderate/vigorous activity binary indicators for the **preliminary independent predictor correlation screen**, with clear thresholds, excluding each variable's 95–99 codes from its own indicator. The NHIS numeric regression target is still unselected.
+
+## Preliminary 2024 NHIS moderate/vigorous binary predictor coding approved — 2026-11-19
+
+Student explicitly approved creating **temporary in-memory** binary indicators for separately measured moderate and vigorous aerobic activity as candidate explanatory variables for the already approved binary outcome `strength_twice_weekly`:
+
+| Raw MODFREQW_A or VIGFREQW_A code | Predictor value | Meaning |
+|---|---|---|
+| 1–28 | 1 | Aerobic activity at least once weekly |
+| 0, 94 | 0 | Less than once weekly or never |
+| 95–99 | NA | Nonstandard / special response; do not assign zero |
+
+This coding applies independently to the moderate and vigorous fields; the underlying source columns and NHIS ZIP files remain intact. For a **binary indicator**, 0 consistently means not meeting a weekly threshold and does not imply never participating. The binary strength target continues to indicate strength training at least **twice** weekly and uses independently collected strengthening responses. No predictors have been definitively selected; correlations still pending. Correlation results must display **pairwise complete-case n** and be compared with the assignment's approximate `|r| >= 0.20` guideline, without attributing causality. This test does not establish suitability of the second numeric target.
