@@ -634,3 +634,16 @@ Student supplied read-only `summary(...[... %in% 1:720])` for the two activity d
 | Maximum (minutes) | 720 | 720 |
 
 Interpretation: Both have identical 30–60 minute interquartile ranges and 45-minute medians, with mean greater than median (suggesting a right tail); maximum 720 is unusually high and merits checking its frequency/sensitivity, but is inside the CDC's ordinary 1–720 duration range, not automatically a missing code. These are **minutes of a moderate/vigorous activity episode**, not total weekly activity minutes. Duration questions apply to eligible respondents who do that activity; unusable special codes and out-of-universe values were excluded **only from these read-only summaries**. No outcome selected and no numeric correlation computed. Potential candidate: `MODMIN_A` provides more than twice the usable cases, but relevance and correlation with independent predictors must still be assessed.
+
+## 2024 NHIS numeric duration target correlation screen — 2026-11-19
+
+Student executed the read-only `check_duration_correlation()` test on the approved numeric **candidate** outcomes `MODMIN_A` and `VIGMIN_A` (minutes per reported exercise bout), retaining source values only in 1:720 for each outcome and pairwise-complete responses of binary independently measured predictors:
+
+| Numeric candidate | Predictor | Pairwise valid n | Pearson r | |r| >= 0.20? |
+|---|---|---:|---:|---|
+| MODMIN_A | vigorous_weekly (vigorous exercise >=1/week) | 22,518 | +0.056 | No |
+| MODMIN_A | strength_twice_weekly (strength >=2/week) | 22,550 | -0.015 | No |
+| VIGMIN_A | moderate_weekly (moderate exercise >=1/week) | 11,174 | -0.065 | No |
+| VIGMIN_A | strength_twice_weekly (strength >=2/week) | 11,204 | -0.053 | No |
+
+**Assessment:** The numeric target criterion has **not** been met for either duration variable *using the two predictors screened for each*. The data source as a whole is **not yet rejected**: duration against the *other duration* and age has not been screened, nor alternative numeric outcomes. Low correlations of duration with binary weekly activity indicators should not be generalized to all exercise behavior. The existing binary strength target still passes its own earlier screen with aerobic indicators (r=.349 and .452). No model selected or fit; no raw data modified. Next: screen MODMIN_A and VIGMIN_A against one another and independently measured recorded age using pairwise valid values; document all sample sizes and any outcome-eligibility restrictions.
