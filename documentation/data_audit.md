@@ -445,3 +445,9 @@ Student ran `round(prop.table(female_strength_by_age, margin=1)*100, 1)` on prev
 | Unknown age | 33.3% | 0.0% | 50.0% | 16.7% |
 
 Within-group percentages agree with prior exact counts; small deviations from 100% come from rounding. The weekly participation percentage gap between women aged 25–34 and 55+ is 15.5 percentage points (41.4 vs 25.9); never-participation gap is 19.0 percentage points (69.1 vs 50.1). Because these are unweighted sample percentages and include special responses in the denominators, do not present them as US prevalence. These rates do not measure fitness club membership, demand for paid introductory classes, or member retention. Age bands are provisional: business source originally said 45–59 and 55+, with overlap; 45–54 is a student-approved working correction. No raw data modified. The next stage is a read-only scan for independent candidate predictors and two outcome targets before assessing the professor's |r| ≈ 0.20 requirement.
+
+## NHIS public release-year clarification — 2026-11-19
+
+The full NHIS **2025** public-use release is available, but 2025 does **not** include the detailed strength-training questions: physical-activity rotating core years applicable to our topic are **2020, 2022, 2024** and (future) 2026. The 2024 dataset remains latest *available for strengthening*, whereas 2025 is the latest publicly released annual NHIS dataset. CDC: https://www.cdc.gov/nchs/documentation/2025-nhis.html (or https://www.cdc.gov/nchs/nhis/documentation/2025-nhis.html); https://www.cdc.gov/nchs/data/nhis/Sample-Adult-Questionnaire.pdf .
+
+Possible trend extension is an unapproved proposal. Do not label earlier descriptive differences across age groups as a temporal trend. Check 2020/2022 codebooks, special values, and complex-survey weights before interpreting population trends.
