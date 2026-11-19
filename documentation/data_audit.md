@@ -853,3 +853,26 @@ Following student's explicit approval to create and execute the initial append, 
 ## First local script run and connection fix — 2026-11-19
 
 Student ran `source("scripts/01_harmonize_nhis.R")`, which printed `Validated 2020: 31568 source rows` before aborting on `Error in close.connection(connection): invalid connection`. The CSV load and validation worked for 2020, but `read.csv` closed the unopened `unz` connection, and the function's `on.exit(close(connection))` tried to close it again. Corrected the committed GitHub R script with `unz(zip_path, csv_names[[1]], open = "r")`, so the script owns the opened connection. This is a connection-lifecycle error rather than evidence of bad survey records. **No append and no processed output occurred** before the failure. The student must re-download corrected script locally and rerun before claiming 2022/2024 validation or 91,848 processed rows.
+
+## Successful first NHIS harmonization — student's actual RStudio output (2026-11-19)
+
+Student re-ran locally the corrected `source("scripts/01_harmonize_nhis.R")` and supplied successful output:
+
+```text
+Validated 2020: 31568 source rows
+Validated 2022: 27651 source rows
+Validated 2024: 32629 source rows
+
+PASS: NHIS append completed and verified
+  SurveyYear Expected_Rows Observed_Rows
+1       2020         31568         31568
+2       2022         27651         27651
+3       2024         32629         32629
+Total_Rows: 91848
+Duplicate_Year_HHX_IDs: 0
+Selected_Columns: 12
+Saved_To: data/processed/nhis_2020_2022_2024_combined.rds
+Raw ZIP files unchanged; no filters, recodes, or imputation applied.
+```
+
+This is the **observed student's local program run**, not merely an expected or simulated result. The script also checked original selected values before/after append and verified reloaded RDS against the appended table. Exactly **91,848 rows × 12 original source columns** retained. File remains on student's Windows computer; the assistant cannot access those local RDS contents and has not uploaded it to public GitHub. There have been no row exclusions, categorical harmonization recodes, or model fits. NHIS remains a repeated-cross-section design, not a longitudinal individual panel. Weighted national prevalence should use the correct **within-year survey design** before interpretation; a pooled multi-year survey design/model requires separate deliberate decisions.
