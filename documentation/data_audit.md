@@ -52,3 +52,19 @@ Student reported within-gender percentages from `round(prop.table(gender_dropout
 - Cross-tabulation absolute counts (`addmargins(gender_dropout)`) not yet provided; request them for exact numerical verification.
 
 **Interpretation limit:** Historical within-gender proportions among records in this one facility, not an annual churn rate. No statistical significance, causal mechanism, or effect of a new training program established.
+
+## Gender × dropout counts verified — 2026-11-18
+
+```text
+             Dropout 0  Dropout 1   Total
+Female           1688       7243    8931
+Male             1286       4725    6011
+Total            2974      11968   14942
+```
+
+- Row and column totals all reconcile.
+- Female dropout share: 7,243 / 8,931 ≈ **81.1%**.
+- Male dropout share: 4,725 / 6,011 ≈ **78.6%**.
+- Female-minus-male difference: **about 2.5 percentage points**.
+- These are retrospective proportions from one facility, not annual rates or causal program effects.
+- Cross-tabulation counts and shares now verified. Continue with age and other variable availability audit before viability decision.
