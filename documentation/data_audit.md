@@ -42,3 +42,13 @@ Original data dictionary in Pinheiro & Cavique (2021), Table 1, defines `Dropout
 Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/
 
 This is an outcome status at the documented finish date, **not an 80.1% annual churn rate**. Cohort and prediction-timing concerns remain. Next check cross-tabulation by Gender.
+
+## Gender × dropout conditional shares — 2026-11-18
+
+Student reported within-gender percentages from `round(prop.table(gender_dropout, margin = 1) * 100, 1)`:
+- Female: **18.9% Dropout=0**, **81.1% Dropout=1**
+- Male: **21.4% Dropout=0**, **78.6% Dropout=1**
+- Female-minus-male reported dropout difference: **+2.5 percentage points** (rounded).
+- Cross-tabulation absolute counts (`addmargins(gender_dropout)`) not yet provided; request them for exact numerical verification.
+
+**Interpretation limit:** Historical within-gender proportions among records in this one facility, not an annual churn rate. No statistical significance, causal mechanism, or effect of a new training program established.
