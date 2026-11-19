@@ -572,3 +572,16 @@ Student explicitly approved creating **temporary in-memory** binary indicators f
 | 95–99 | NA | Nonstandard / special response; do not assign zero |
 
 This coding applies independently to the moderate and vigorous fields; the underlying source columns and NHIS ZIP files remain intact. For a **binary indicator**, 0 consistently means not meeting a weekly threshold and does not imply never participating. The binary strength target continues to indicate strength training at least **twice** weekly and uses independently collected strengthening responses. No predictors have been definitively selected; correlations still pending. Correlation results must display **pairwise complete-case n** and be compared with the assignment's approximate `|r| >= 0.20` guideline, without attributing causality. This test does not establish suitability of the second numeric target.
+
+## 2024 NHIS preliminary binary target correlation screen — 2026-11-19
+
+Student ran the approved temporary in-memory binary coding for `MODFREQW_A` and `VIGFREQW_A`: 1 = activity at least weekly (codes 1–28); 0 = less than weekly or never (codes 0 or 94); NA = special 95–99. Target is `strength_twice_weekly`: 1 for strengthening code 2–28; 0 for strengthening codes 0/1/94; NA for strengthening codes 95–99.
+
+| Predictor | Complete-pair n | Pearson r with twice-weekly strengthening | Meets approximate |r| ≥ 0.20? |
+|---|---:|---:|---|
+| Moderate aerobic activity at least weekly | 31,238 | +0.3486380 | Yes |
+| Vigorous aerobic activity at least weekly | 31,315 | +0.4517252 | Yes |
+
+Both correlations **exceed the numerical threshold** for the preliminary binary target and relate independently measured survey domains, rather than a recode of the target itself. These are unweighted cross-sectional associations; no causal inference, membership demand, or retention benefit is established. This does NOT complete the full dataset scorecard: the required separate numeric target, its substantive predictors, year harmonization, survey weighting, and data dictionary/variable screening remain pending.
+
+Student supplied the final correlation table but not the two intermediate predictor-count tables from the same command. Source frequencies imply expected MOD binary counts 0=9,978;1=21,435;NA=1,216, and VIG counts 0=22,070;1=9,357;NA=1,202; verify actual objects in R before treating predictor coding as fully audited.
