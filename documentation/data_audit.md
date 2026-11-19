@@ -790,3 +790,14 @@ Each four-category sum exactly matches that year's original sample size, with **
 **Interpretation:** The *observed coding structure* is consistent across all three years for strength, moderate, and vigorous frequency, and for moderate/vigorous duration. This does **not yet demonstrate** exact question wording, survey design comparability, year-specific weight treatment, or final model relevance. None of these descriptive summaries are survey-weighted national trends. The three raw annual dataframes have not been appended or altered.
 
 **Pending harmonization plan approval:** narrow to common relevant source columns (sex, age, activity frequencies, durations, WTFA_A, PSTRAT, PPSU), preserve source code values, add survey year and unique within-year row identifier, derive only approved in-memory age and activity group indicators, document all missingness and programmatic transformations, compare source versus appended row totals, and ensure survey year-specific PSU/stratum handling. Check questionnaire wording and any required other numeric/categorical predictors before writing final processing scripts.
+
+## Three-year NHIS column storage-type audit — 2026-11-19
+
+Student reported the read-only R `type_check` for 2020, 2022, and 2024 on 10 proposed common columns. All 10 matched across all three imports:
+
+| Variables | Class in 2020, 2022, and 2024 |
+|---|---|
+| `SEX_A`, `AGEP_A`, `STRFREQW_A`, `MODFREQW_A`, `VIGFREQW_A`, `MODMIN_A`, `VIGMIN_A`, `PSTRAT`, `PPSU` | `integer` |
+| `WTFA_A` | `numeric` |
+
+This verifies **30 of 30 class checks**, meaning no initial coercion is needed solely to stack these fields. It does not establish complete definition or question wording equivalence or correct joint survey design. No data appended, recoded or saved. Proposed provisional harmonization is to preserve these ten untouched input columns plus `SurveyYear` and a row-in-year audit key, with all code changes implemented in an approved numbered script to data/processed; do **not** run until question wording and data choices are approved.
