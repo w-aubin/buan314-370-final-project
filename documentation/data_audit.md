@@ -280,3 +280,19 @@ Sex code 8 (not ascertained) has 0 observations.
 | **Total** | | **32,629** |
 
 **Major coding caveat**: `94` denotes never; `95` extreme; `96` unable; `97` refused; `98` not ascertained; `99` don't know. Neither `94–99` nor `0` should be read as literal counts of exercise episodes (`0` denotes *less than once per week*, not necessarily never). Do not calculate numeric means or correlations on these original codes. The sample's unweighted `94` proportion is 57.57%; this is not the female-specific proportion and not a weighted population estimate. No recoding, exclusions or processed file created. Download and preserve the 2024 codebook locally before proceeding with any derived variables.
+
+## NHIS 2024 sex × never-strengthening code screen — 2026-11-19
+
+Student ran the original-code cross-tabulation SEX_A against STRFREQW_A == 94:
+
+| SEX_A code | STRFREQW_A != 94 | STRFREQW_A == 94 | Total |
+|---|---:|---:|---:|
+| 1 (Male) | 7,074 | 7,911 | 14,985 |
+| 2 (Female) | 6,770 | 10,869 | 17,639 |
+| 7 (Refused) | 1 | 2 | 3 |
+| 9 (Don't know) | 1 | 1 | 2 |
+| **Total** | **13,846** | **18,783** | **32,629** |
+
+Unweighted within-sex never proportions: Female **61.6%**, Male **52.8%**, difference about **8.8 percentage points**. These are not survey-weighted national estimates. The FALSE column includes numeric strengthening responses, code 0 (less than weekly), and missing/unknown response codes 95–99. Do not label all FALSE cases active participants. No conclusions about willingness to buy a service or membership retention. No data changes.
+
+Next: inspect sex-specific special codes 95–99 without editing records.
