@@ -387,3 +387,10 @@ User ran the read-only approved selection `valid_age_sex <- nhis_raw$AGEP_A %in%
 | Total | 32,572 | — | — | — |
 
 Subtracting from original sex counts confirms 22 male and 30 female observations had unusable age codes; 52 age unknown overall, plus 5 with unknown sex, consistent with 32,629 - 32,572 = 57. The friend's club reports medians of 48 (men) and 46 (women), so the NHIS sample's medians are older by 5 and 10 years respectively; the Sport Services adult female median is 24. Populations and age recording contexts differ, so these contrasts **do not establish either dataset represents the business**. No cleaning or saved subsets occurred. Next planned diagnostic: characterize women's strengthening participation across age groups, with the student's approval of age-group boundaries first.
+
+
+## Provisional company-aligned NHIS age bands approved — 2026-11-19
+
+Student explicitly approved using these **temporary five age bands** for NHIS age-stratified exploratory analysis: **18–24, 25–34, 35–44, 45–54, 55+**. This is based on the business contact's age table with original overlapping labels **45–59** and **55+**. The student assumes 45–54 is intended and will request confirmation. Keep the company's raw summary as supplied; the temporary analytical categorization must not overwrite NHIS's `AGEP_A` or any original data.
+
+Maintain previously approved handling: 18–84 as literal ages, 85 as **85+**, and 97/99 as unknown for age-specific comparisons only. Codes for unknown reported sex (SEX_A 7/9) should remain separately visible in audit counts, not interpreted as male/female. R code should create age groups **in memory** and verify counts before comparing strength participation across groups. Company member counts are aggregate observations and should never be joined as though NHIS respondents are those members.
