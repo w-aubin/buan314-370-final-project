@@ -172,3 +172,14 @@ From `sapply(adult_numeric, function(x) c(Zero=sum(x==0), Above_Zero=sum(x>0), P
 These are recorded **average weekly visit/class measures** over a member's enrollment, not evidence that the same facilities or program types were available or that zero attendance represents a lack of demand. Exact zero based on imported numeric values. No records removed; not yet testing correlations or prediction timing. In particular, retrospective averages from full enrollment are potentially contemporaneous or post-outcome measures if used to predict future dropout.
 
 Next proposed read-only analysis: stratify mean and median of both attendance measures by observed Dropout status, with n, as a *descriptive diagnostic* only (not causal and not yet a leakage-safe predictor check).
+
+## Attendance by dropout status among adult records — 2026-11-18
+
+Student ran `aggregate(cbind(AverageFrequency, AttendedClassesAverage) ~ Dropout, data=sports_raw[sports_raw$Age >= 18, ], FUN=mean)` on the approved adult scope (n=12,256):
+
+| Outcome | Dropout=0 | Dropout=1 | Difference (0 minus 1) |
+|---|---:|---:|---:|
+| AverageFrequency, mean weekly visits across enrollment | 1.0928357 | 0.7494723 | 0.3433634 |
+| AttendedClassesAverage, mean weekly classes across enrollment | 0.13035251 | 0.06629515 | 0.06405736 |
+
+Counts from earlier cross-tabulation: Dropout=0 adult n=1,929; Dropout=1 adult n=10,327. Relative to Dropout=0 means, dropout-group visits are about 31.4% lower and class attendance is about 49.1% lower. **These are unadjusted descriptive associations only.** Variables summarize enrollment and may contain future information if used to predict dropout at earlier time points. No causal inference or program-specific effect is warranted. No model fitted, no data altered. Next: preliminary read-only pairwise correlation screen for these two numeric candidates and Dropout before testing timing-safe predictors.
