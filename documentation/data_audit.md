@@ -103,3 +103,18 @@ Student's read-only `table(Gender = sports_raw$Gender, Under_18 = sports_raw$Age
 | Total | 12,256 | 2,686 | 14,942 |
 
 `sum(sports_raw$Age == 0)` returned **19**. Under-18 records constitute approximately **18.0%** of total; female adults n = **7,491**. Source of age zero remains unexplained. No ages changed; no rows removed or filtered from underlying data. Next: read-only three-way tabulation by gender, age eligibility, and dropout.
+
+## Gender × under-18 × dropout — 2026-11-18
+
+Student supplied read-only `table(Gender = sports_raw$Gender, Under_18 = sports_raw$Age < 18, Dropout = sports_raw$Dropout)`:
+
+| Gender / recorded age | Dropout 0 | Dropout 1 | Total | Dropout=1 share |
+|---|---:|---:|---:|---:|
+| Female 18+ | 1,117 | 6,374 | 7,491 | 85.1% |
+| Female under 18 | 571 | 869 | 1,440 | 60.3% |
+| Male 18+ | 812 | 3,953 | 4,765 | 83.0% |
+| Male under 18 | 474 | 772 | 1,246 | 62.0% |
+| **All adults** | **1,929** | **10,327** | **12,256** | **84.3%** |
+| **All under 18** | **1,045** | **1,641** | **2,686** | **61.1%** |
+
+The overall total remains **14,942** with **2,974** non-dropout and **11,968** dropout. Adult female-minus-adult male dropout difference ≈2.1 percentage points; adult female-minus-under-18 female ≈24.7 percentage points. This is descriptive, not an annual churn rate or a causal effect. Age is measured at endpoint, which matters for interpretation and predictive feature timing. No records filtered or modified. **Adult-only project scope not yet approved by student.**
