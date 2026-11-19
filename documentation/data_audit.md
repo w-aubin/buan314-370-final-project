@@ -371,3 +371,7 @@ Student ran a read-only frequency table for `AGEP_A` codes 85, 97, 98, and 99 an
 | 99 | Don't know | 4 |
 
 All observed counts match the CDC 2024 NHIS Sample Adult codebook counts discussed in the prior verification. Of the 32,629 imported rows, 52 (48+4) have unknown respondent age; 32,577 have `AGEP_A` 18–85, where code 85 means 85+ and not necessarily exactly 85. No data recoding, filtering, or deletion performed. **Pending student approval:** use codes 97/99 as unknown for age-specific summaries (retaining original records) and present code 85 as "85+". Do not interpret the original 99 maximum as an observed age or treat 85 as exact 85 in age means.
+
+## NHIS age-handling decision approved — 2026-11-19
+
+The student explicitly approved, for **temporary age-specific summaries only**, treating `AGEP_A` values **18–84** as recorded ages, **85** as the grouped category **85 years or older**, and **97 / 99** as unknown ages excluded from age-specific comparisons. Code **98** has no observed records. All **32,629** raw observations remain intact; no change to the source file, no processed file created, and no automatic changes to outcome variables. Exactly **32,577** survey records have a valid age code from 18 through 85; this includes 1,189 top-coded 85+ respondents. Subsequent age summaries must not treat 85 as an exact age for calculating a true mean, or interpret 99 as age 99. When comparing recorded sex groups, keep clear that SEX_A = 1 means Male, 2 means Female and 7/9 are nonresponse, not male/female.
