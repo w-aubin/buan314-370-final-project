@@ -19,3 +19,16 @@ A full-service health-club operator may wish to prioritize fitness and wellness 
 | Not yet selected | | | | | | | | | | | | |
 
 **Note:** Do not claim that a dataset meets the assignment requirements before inspecting a downloaded source, documentation, and target correlations.
+
+## Preliminary feasibility comparison — 2026-11-18
+
+**Status:** Source candidates identified, neither fully validated. The public research focus is retention improvement through targeted wellness programming. No private business figures included.
+
+| Option | Original source | Published data structure | Numeric outcome candidate | Binary outcome candidate | Unverified checks |
+|---|---|---|---|---|---|
+| Women's strengthening habits | [2024 NHIS adult survey](https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html) | 32,629 adults in full public-use sample; `STRFREQ_A` documented | Times per week doing strength activity, with special missing/never codes handled correctly | Separate aerobic activity category or guideline outcome, not a mechanical copy of strength frequency | Female sample, variable types, target correlations, survey weights, viability |
+| Member retention | [Sport Services Dataset v1](https://data.mendeley.com/datasets/yprk4jdgnv/1), [publisher article](https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/) | 14,942 real user records; 45 documented attributes; Lisbon 2014–2019, CC BY 4.0 | Average attendance or classes per week (subject to timing checks) | `Dropout` True/False | Actual downloadable file inspection, correlation, timing leakage, population transfer |
+
+**Important:** Published sports-facility data include variables computed over the entire enrollment or final two months. Do not use these to predict an earlier event. Age is recorded at endpoint rather than signup. Some activity descriptions in the paper appear inconsistent; confirm categories from the source and actual file. No association establishes that an untested program prevents churn.
+
+**ATUS:** The student has five 2025 ATUS source files stored locally in `data/raw` and began read-only ZIP inspection. Those files remain available but are not yet the chosen project data.
