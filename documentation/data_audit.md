@@ -394,3 +394,21 @@ Subtracting from original sex counts confirms 22 male and 30 female observations
 Student explicitly approved using these **temporary five age bands** for NHIS age-stratified exploratory analysis: **18–24, 25–34, 35–44, 45–54, 55+**. This is based on the business contact's age table with original overlapping labels **45–59** and **55+**. The student assumes 45–54 is intended and will request confirmation. Keep the company's raw summary as supplied; the temporary analytical categorization must not overwrite NHIS's `AGEP_A` or any original data.
 
 Maintain previously approved handling: 18–84 as literal ages, 85 as **85+**, and 97/99 as unknown for age-specific comparisons only. Codes for unknown reported sex (SEX_A 7/9) should remain separately visible in audit counts, not interpreted as male/female. R code should create age groups **in memory** and verify counts before comparing strength participation across groups. Company member counts are aggregate observations and should never be joined as though NHIS respondents are those members.
+
+## NHIS company-aligned provisional age bands × sex — 2026-11-19
+
+Student ran `table(Age_Group = nhis_age_group, Sex = nhis_raw$SEX_A, useNA = "ifany")` for the agreed provisional categories. Observed values:
+
+| Age group | Male (1) | Female (2) | Sex refused (7) | Sex don't know (9) | Full group total |
+|---|---:|---:|---:|---:|---:|
+| 18–24 | 1,024 | 982 | 1 | 1 | 2,008 |
+| 25–34 | 2,220 | 2,454 | 1 | 1 | 4,676 |
+| 35–44 | 2,385 | 2,671 | 1 | 0 | 5,057 |
+| 45–54 | 2,085 | 2,361 | 0 | 0 | 4,446 |
+| 55+ | 7,249 | 9,141 | 0 | 0 | 16,390 |
+| Unknown age | 22 | 30 | 0 | 0 | 52 |
+| **Total** | **14,985** | **17,639** | **3** | **2** | **32,629** |
+
+All 32,629 observations accounted for; 32,577 valid age-band codes, 52 with special age values. Female usable-age n=17,609, male usable-age n=14,963. No changes to the source data; `nhis_age_group` remains an in-memory categorical vector. Source company-provided age distribution uses all club memberships; do not directly equate to female-only NHIS subgroup. Original company reported 45–59 and 55+ overlap; student's 45–54 interpretation remains explicitly provisional. Survey data unweighted.
+
+**Next read-only question:** Tabulate the existing approved strength-category vector for female respondents by `nhis_age_group`, including unknown ages; verify counts before computing conditional percentages.
