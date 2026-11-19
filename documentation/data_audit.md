@@ -524,3 +524,19 @@ The student explicitly approved applying the **same temporary, in-memory four-ca
 | 95–99 | Special responses (source codes preserved individually in raw data) |
 
 No records are to be dropped or rewritten in `nhis_raw`. These groups are for provisional descriptive/feasibility screening, not a finalized treatment of missingness or numeric frequency. In particular, category `0` means less than weekly, **not exactly zero** sessions. The next read-only code step creates two vectors in memory and confirms category counts sum to the 2024 sample n=32,629 before considering correlation. An independent numerical and binary prediction target, and treatment of special codes, still need student approval before modeling.
+
+## 2024 NHIS aerobic category count verification — 2026-11-19
+
+The student ran the *approved in-memory* four-category recodes of `MODFREQW_A` and `VIGFREQW_A` and reported:
+
+| Category | Moderate | Vigorous |
+|---|---:|---:|
+| At least weekly (original 1–28) | 21,435 | 9,357 |
+| Less than weekly (original 0) | 1,192 | 1,891 |
+| Never (original 94) | 8,786 | 20,179 |
+| Special response (original 95–99) | 1,216 | 1,202 |
+| **Total** | **32,629** | **32,629** |
+
+Both totals reconcile exactly to the imported 2024 NHIS Sample Adult file, and they match the original-code frequency tables previously supplied. No unexpected `Other / undocumented` categories were observed. The student has *not* approved any additional 0/1 recode yet, no numeric correlation has been calculated, no rows removed, and the source dataset remains unchanged.
+
+**Next proposed decision:** To screen the 2024 strengthening **binary** outcome against separately measured aerobic activity, define `1 = at least weekly`, `0 = less than weekly or never`, `NA = special response 95–99`, preserving source codes and reporting pairwise denominators. Ask student approval before creating these temporary indicators. This is an independent binary target screen, not the full two-target or survey-weighted viability check.
