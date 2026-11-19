@@ -709,3 +709,9 @@ Student supplied `table(nhis20_raw$STRFREQW_A, useNA="ifany")` with counts for a
 | **Total** | | **31,568** | **100.0%** |
 
 Detailed special codes: 95=54; 96=227; 97=21; 98=653; 99=88. Counts reconcile and match previously noted CDC 2020 codebook frequencies. For the previously approved candidate target **strength ≥2 times weekly**, the observed 2020 code counts imply 9,345 "yes" (2–28), 21,180 "no" (0,1,94), and 1,043 special/unknown. This derived count has **not yet been independently verified by a 2020 R recode**. The 2020/2022/2024 response codes appear consistent at this level, but exact question wording, age/sex distributions, survey weights, and year harmonization remain unverified. These are raw sample counts, not weighted national trends. No raw source modified or data appended.
+
+## 2020 NHIS demographic code preliminary check — 2026-11-19
+
+Student's read-only 2020 `SEX_A` frequencies: **1=14,521; 2=17,045; 7=1; 9=1** (n=31,568), matching official 2020 Sample Adult codebook (p.19). `tail(sort(unique(nhis20_raw$AGEP_A)),12)` returned **76,77,78,79,80,81,82,83,84,85,97,99**. Official CDC revised 2020 Sample Adult codebook, p.17 (https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHIS/2020/Adult-codebook.pdf) defines `AGEP_A` as age top-coded: **18–84** actual ages (published count 30,315), **85** = ages 85+ (1,183), **97** = refused (63), **98** = not ascertained (0), **99** = don't know (7). These are **source-published expected counts**, not yet verified against user's 2020 age frequency table. Never interpret code 99 as a respondent aged 99.
+
+Next read-only check: explicit tabulation of `AGEP_A` values 85/97/98/99 in `nhis20_raw`. The user's prior decision for 2024 age handling is a proposed harmonized rule, not automatically applied to 2020 until the codes match and a harmonization plan is approved. No raw source changed.
