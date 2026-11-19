@@ -741,3 +741,17 @@ Next verification: confirm design-weight fields WTFA_A, PSTRAT and PPSU exist in
 ## NHIS three-year survey-design column presence — 2026-11-19
 
 Student ran an in-memory, read-only check that `WTFA_A` (Sample Adult final weight), `PSTRAT` (public-use stratum), and `PPSU` (public-use PSU) are present in each of `nhis20_raw` (2020), `nhis22_raw` (2022) and `nhis_raw` (2024). **All nine tests returned TRUE.** This establishes names only—not valid positive weight values or correct combined survey design. Survey-weighted proportions will require applying the proper within-year weights; a pooled design must explicitly address survey-year-specific stratum/PSU labels and weighting. Next do read-only weight-missing/positive, stratum/PSU-missing and distinct-count checks on all years. No changes, append, or modeling performed.
+
+## 2020/2022/2024 NHIS survey weight and design-value audit — 2026-11-19
+
+Student supplied R read-only `check_survey_design` output:
+
+| Year | Rows | Missing WTFA_A | Nonpositive WTFA_A | Missing PSTRAT | Missing PPSU | Distinct PSTRAT codes | Distinct PPSU codes |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2020 | 31,568 | 0 | 0 | 0 | 0 | 52 | 110 |
+| 2022 | 27,651 | 0 | 0 | 0 | 0 | 52 | 104 |
+| 2024 | 32,629 | 0 | 0 | 0 | 0 | 52 | 108 |
+
+No missing or nonpositive weights and no missing stratum/PSU codes were found. The distinct `PPSU` count is the count of *code values overall*, not necessarily the number of unique sampling units across all strata or all years. This screen does **not** validate combined-year weights or survey design. When combining years, identify strata and PSUs nested by survey year as appropriate; verify against the NCHS methodological guidance before population-level inference. No rows filtered or altered; original ZIPs untouched.
+
+**Next read-only check**: verify common availability of candidate numeric outcomes `MODMIN_A`, `VIGMIN_A`, separate aerobic frequencies `MODFREQW_A`, `VIGFREQW_A`, and the already confirmed strengthening outcome `STRFREQW_A` across 2020/2022/2024. Presence alone does not prove coding consistency.
