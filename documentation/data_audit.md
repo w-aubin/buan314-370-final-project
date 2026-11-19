@@ -68,3 +68,18 @@ Total            2974      11968   14942
 - Female-minus-male difference: **about 2.5 percentage points**.
 - These are retrospective proportions from one facility, not annual rates or causal program effects.
 - Cross-tabulation counts and shares now verified. Continue with age and other variable availability audit before viability decision.
+
+## Existing age classes × gender — 2026-11-18
+
+Student supplied `table(sports_raw$AgeClass, sports_raw$Gender)`:
+
+| Original AgeClass | Female | Male | Total |
+|---|---:|---:|---:|
+| [00,20[ | 2,137 | 1,678 | 3,815 |
+| [20,35[ | 4,920 | 3,122 | 8,042 |
+| [35,49[ | 1,099 | 758 | 1,857 |
+| [49,65[ | 557 | 326 | 883 |
+| [65,inf[ | 218 | 127 | 345 |
+| **Total** | **8,931** | **6,011** | **14,942** |
+
+**Observed:** 7,057 of 8,931 female records (79.0%) fall into under-20 or 20–34 age classes; 1,874 (21.0%) are age 35 or older according to these codes. Among women, 218 (2.4%) fall in 65+. The operator described a female membership median age of 46, so transferability is a concern; no claims about sampling representativeness are justified yet. Under-20 respondents may include minors; investigate suitability before research scope is chosen. Still waiting on output of `summary(sports_raw$Age)` to establish observed numeric age distribution. Do not re-bin or modify source data without approval.
