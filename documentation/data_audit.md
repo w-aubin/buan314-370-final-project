@@ -655,3 +655,16 @@ Student ran `valid_both <- nhis_raw$MODMIN_A %in% 1:720 & nhis_raw$VIGMIN_A %in%
 **Observed:** `n = 10,687` with valid values for both exercise duration variables, Pearson `r = +0.3297101`. This meets the assignment's approximate `|r| >= 0.20` numeric target threshold for a candidate target of either `MODMIN_A` or `VIGMIN_A`, with the other as a separately recorded duration variable. In a hypothetical *simple* linear regression with one duration predictor among these respondents, `r^2 ≈ 0.1087` (10.9%), not a fitted multivariable model.
 
 **Important limitations:** This is a conditional sample of respondents reporting both types of exercise duration, not all adult respondents. These duration variables are measured in the same survey and the prediction moment has not been specified, so avoid claims of a prospective forecast or causal relationship. The 720-minute high values could influence Pearson's correlation; the required outlier/association verification plot and sensitivity check are still pending. No regression model fitted, no source data changed or removed, no final numeric target selected. The binary target separately passed its preliminary correlation screen with moderate/vigorous activity indicators. The 2020/2022/2024 harmonization remains a proposal, not a completed dataset.
+
+## NHIS 2024 duration correlation upper-tail sensitivity check — 2026-11-19
+
+Student ran read-only R code calculating `cor(MODMIN_A, VIGMIN_A)` among valid paired duration responses, then temporarily retained observations with **both** durations at or below their respective 99th-percentile thresholds.
+
+| Test | Observations | Pearson correlation |
+|---|---:|---:|
+| Original paired valid duration observations | 10,687 | +0.330 (earlier unrounded: +0.3297101) |
+| At/below both individual 99th percentiles | 10,535 | +0.339 |
+
+**152** of the original 10,687 paired observations (about 1.42%) were outside at least one upper percentile cutoff; excluding the union of two upper tails need not exclude exactly 1%. The correlation remained above the course's approximate |r| >= 0.20 benchmark and changed by just +0.009. This supports robustness *to this particular upper-tail trimming* but does not prove absence of all influential observations or guarantee predictive performance. The target remains a duration observed among participants with valid reports, not overall exercise minutes or gym retention. Original raw data unchanged; the trim is sensitivity only and not an approved cleaning step. A report-quality scatterplot/group averages with source counts remain to be addressed during full EDA.
+
+Next planned workflow: download and inspect **2020 NHIS** data as already approved, then check its strength-training coding and year-specific comparability before any append/harmonization.
