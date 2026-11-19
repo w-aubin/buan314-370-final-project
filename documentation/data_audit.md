@@ -618,3 +618,19 @@ Student ran read-only `check_minutes()` on 2024 `MODMIN_A` and `VIGMIN_A`:
 All counts match the official 2024 CDC NHIS Sample Adult Codebook, **p. 473 (MODMIN_A)** and **p. 479 (VIGMIN_A)**: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/adult-codebook.pdf. These variables measure **reported duration of leisure-time moderate/vigorous physical activity in minutes**, standardized from source duration units; their question universe consists of respondents who do the corresponding activity. These are **not measures of total weekly minutes**. The substantial `NA` counts primarily reflect restricted survey question universes (not necessarily file corruption), which matter for a descriptive or regression population definition.
 
 Still no **numeric target** selected, no 0.20 screen for this target, and no automatic recoding or exclusions approved. Next: read-only `summary()` of observed valid-duration values (1–720) for each variable, keeping originals untouched. If selecting an outcome later, explicitly define population, denominator and any handling of never/nonresponse.
+
+## 2024 NHIS valid moderate/vigorous activity duration summaries — 2026-11-19
+
+Student supplied read-only `summary(...[... %in% 1:720])` for the two activity duration candidate targets:
+
+| Statistic | MODMIN_A | VIGMIN_A |
+|---|---:|---:|
+| Valid responses (verified previously) | 22,687 | 11,265 |
+| Minimum (minutes per reported activity) | 1 | 1 |
+| Q1 (minutes) | 30 | 30 |
+| Median (minutes) | 45 | 45 |
+| Mean (minutes) | 60.40 | 57.89 |
+| Q3 (minutes) | 60 | 60 |
+| Maximum (minutes) | 720 | 720 |
+
+Interpretation: Both have identical 30–60 minute interquartile ranges and 45-minute medians, with mean greater than median (suggesting a right tail); maximum 720 is unusually high and merits checking its frequency/sensitivity, but is inside the CDC's ordinary 1–720 duration range, not automatically a missing code. These are **minutes of a moderate/vigorous activity episode**, not total weekly activity minutes. Duration questions apply to eligible respondents who do that activity; unusable special codes and out-of-universe values were excluded **only from these read-only summaries**. No outcome selected and no numeric correlation computed. Potential candidate: `MODMIN_A` provides more than twice the usable cases, but relevance and correlation with independent predictors must still be assessed.
