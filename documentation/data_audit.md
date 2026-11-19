@@ -118,3 +118,9 @@ Student supplied read-only `table(Gender = sports_raw$Gender, Under_18 = sports_
 | **All under 18** | **1,045** | **1,641** | **2,686** | **61.1%** |
 
 The overall total remains **14,942** with **2,974** non-dropout and **11,968** dropout. Adult female-minus-adult male dropout difference ≈2.1 percentage points; adult female-minus-under-18 female ≈24.7 percentage points. This is descriptive, not an annual churn rate or a causal effect. Age is measured at endpoint, which matters for interpretation and predictive feature timing. No records filtered or modified. **Adult-only project scope not yet approved by student.**
+
+## Preliminary analytical scope approved — 2026-11-18
+
+The student explicitly approved evaluating **both female and male records with recorded Age >= 18**, emphasizing women and retaining men as a comparison population. Existing read-only counts imply **n = 12,256** (female **7,491**, male **4,765**); under-18 records = **2,686**. This is a proposed analytical scope for data viability and later analysis, **not a data cleaning action**. The source `data/raw/DadosV3.csv` remains untouched; no processed file or row removal has been performed.
+
+**Critical interpretation:** The published `Age` measure is recorded at the member's endpoint, so `Age >= 18` indicates adulthood **at that recorded reference date**, not necessarily at enrollment. The student's belief that most health clubs require members to be 18 is an assumption, not a dataset finding or a universal entry rule. Confirm eligibility policy for the target club if it becomes relevant.
