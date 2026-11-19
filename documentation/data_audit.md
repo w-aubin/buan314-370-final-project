@@ -142,3 +142,20 @@ Student ran `by(sports_raw$Age[sports_raw$Age >= 18], sports_raw$Gender[sports_r
 Business informant separately reported medians of 46 (women) and 48 (men) across their organization's club memberships; therefore adult medians differ by 22 and 23 years respectively. These data describe different geographic/organizational populations and potentially different measurement contexts; no representativeness established. The source dictionary identifies `Age` at membership endpoint, not necessarily at enrollment. Adult-only scope remains provisional for the ongoing feasibility test.
 
 Potential numeric candidate definitions from source dictionary (not yet selected): `AverageFrequency` = average weekly visits over entire enrollment; `AttendedClassesAverage` = average classes per week. **Both are retrospective aggregate variables**, so timing and leakage require checking if intended as forecasting predictors. Source: Pinheiro and Cavique, *Data in Brief* 36 (2021), DOI 10.1016/j.dib.2021.107054.
+
+## Candidate numeric outcome distributions, adult scope — 2026-11-18
+
+Student supplied read-only R summaries (subset `sports_raw$Age >= 18`, n=12,256; all raw rows preserved):
+
+| Summary | AverageFrequency | AttendedClassesAverage |
+|---|---:|---:|
+| Min | 0 | 0 |
+| Q1 | 0.29 | 0 |
+| Median | 0.61 | 0 |
+| Mean | 0.8035 | 0.07638 |
+| Q3 | 1.09 | 0 |
+| Max | 4.94 | 3.01 |
+
+According to the publisher's dictionary, `AverageFrequency` is the average frequency of visits to the club per week during the full enrollment period and `AttendedClassesAverage` is average number of classes attended per week. The latter's 75th percentile equals zero, indicating a large mass at zero; an exact zero count has not yet been established. The former shows much more variation. Neither is yet chosen as the numeric target, and both summarize activity during full enrollment, which creates timing concerns for forecasting a future dropout outcome.
+
+**Next read-only check:** count zero and positive values for each outcome in the approved adult analytical population before selection.
