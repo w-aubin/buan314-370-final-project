@@ -540,3 +540,17 @@ The student ran the *approved in-memory* four-category recodes of `MODFREQW_A` a
 Both totals reconcile exactly to the imported 2024 NHIS Sample Adult file, and they match the original-code frequency tables previously supplied. No unexpected `Other / undocumented` categories were observed. The student has *not* approved any additional 0/1 recode yet, no numeric correlation has been calculated, no rows removed, and the source dataset remains unchanged.
 
 **Next proposed decision:** To screen the 2024 strengthening **binary** outcome against separately measured aerobic activity, define `1 = at least weekly`, `0 = less than weekly or never`, `NA = special response 95–99`, preserving source codes and reporting pairwise denominators. Ask student approval before creating these temporary indicators. This is an independent binary target screen, not the full two-target or survey-weighted viability check.
+
+## NHIS strengthening 2+ weekly binary target approved — November 19, 2026
+
+The student explicitly approved a **candidate binary outcome** defined from the 2024 `STRFREQW_A` source field:
+
+| Input code | Proposed binary outcome | Descriptive meaning retained separately |
+|---|---|---|
+| 94 | 0 | Never |
+| 0 | 0 | Less than weekly |
+| 1 | 0 | Once weekly |
+| 2–28 | 1 | At least twice weekly |
+| 95–99 | `NA` for this model | Extreme / unable / refused / not ascertained / don't know kept distinct in original data |
+
+This preserves the distinction between **never** and **infrequent** activity for descriptive comparisons. The 0/1 outcome answers specifically whether the respondent reported *at least twice-weekly* strengthening, **not whether they do strength training at all**. For a correct group count, expected from previously verified 2024 source frequencies (not yet run as a new R check): yes **9,813** (=11,757 numeric 1–28 minus code 1 count 1,944); no **21,697** (=18,783 never + 970 less-than-weekly + 1,944 once weekly); missing **1,119** (special 95–99); total **32,629**. Counts must be verified against the student's actual R output. Do not use the numeric frequency codes 94–99 as ordinary exercise counts. No data changed or removed and no regression fit.
