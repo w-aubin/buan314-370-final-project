@@ -195,3 +195,20 @@ Student supplied R output from `round(cor(adult_screen, use = "complete.obs"), 3
 | Dropout | -0.178 | -0.097 | 1.000 |
 
 **Preliminary result:** No pair in this three-variable screen reaches the assignment's approximate absolute 0.20 correlation threshold. For the proposed binary target `Dropout`, neither of these engagement variables passes individually. For proposed numeric target `AverageFrequency`, neither `AttendedClassesAverage` nor `Dropout` passes. **Do not declare the entire dataset nonviable yet**: other independently measured predictors have not been screened. All three variables describe activity/outcome over or at the endpoint of enrollment, so even strong correlations may be unsuitable for forecasting future dropout due to temporal leakage. Correlation is not causation, and these are not annual churn statistics. Neither target nor predictor list has been approved; no changes to underlying data.
+
+## Adult scope: five strongest numeric correlations with two candidate targets — 2026-11-18
+
+Student reported R `top_correlations()` based on numeric fields of the adult (Age >=18) sample (n=12,256):
+
+**Binary target `Dropout`**: `DaysWithoutFrequencyClass1` +0.345, `Ratio` -0.270, `LifetimeValue` -0.262, `NumberOfRenewals` -0.258, `NumberOfFrequencies` -0.249.
+
+**Numeric target `AverageFrequency`**: `AverageFrequencyClass1` +0.838, `RealNumberOfVisits` +0.635, `Ratio` +0.534, `NumberOfFrequenciesClass1` +0.526, `NumberOfFrequencies` +0.505.
+
+**Interpretation**: Both candidate targets have at least one |r| >= 0.20 in the numerical correlation screen. However, this is not yet a pass on *valid prediction*. The publisher's dictionary confirms that:
+- `AverageFrequencyClass1` is a categorized encoding of the numeric target itself (mechanical relationship, unusable as its independent predictor).
+- `DaysWithoutFrequencyClass1` categorizes days without visits at the member endpoint, not a clean pre-cancellation predictor.
+- `LifetimeValue`, `NumberOfRenewals`, and `NumberOfFrequencies` accumulate over the enrollment span.
+- `Ratio` and `RealNumberOfVisits` refer to the last activity / last two months of enrollment (attributes 40–44), making their availability at an earlier prediction time questionable.
+- `NumberOfFrequenciesClass1` discretizes total visits and is also a retrospective measure.
+
+**Decision:** Do not select the dataset or predictors yet. Next is a **read-only limited correlation screen for characteristics and program-category flags** rather than the mechanically related and endpoint-dependent variables. Original definitions: Pinheiro & Cavique, *Data in Brief* (2021), Table 1 and note (b) below Table 3, https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/ ; licensed source https://data.mendeley.com/datasets/yprk4jdgnv/1 . No raw files modified, models fitted, or feature selection approved.
