@@ -30,3 +30,15 @@ Student supplied the `column_audit` table generated in R from `sports_raw`. All 
 Student ran `sapply(sports_raw[, text_columns, drop = FALSE], function(x) sum(trimws(x) == "", na.rm = TRUE))`. All **12 imported character columns** returned **0 blank or whitespace-only values**: Id, AgeClass, Gender, EnrollmentStart, EnrollmentFinish, EnrollmentDurationClass2, LastPeriodStart, LastPeriodFinish, DateLastVisit, DaysWithoutFrequencyClass2, AverageFrequencyClass2, RatioClass2.
 
 **Limit:** Blank-string and `is.na()` checks do not reveal special numeric/text codes for unknown, not applicable, or missing observations; check the published dictionary and frequency distributions before classifying the data as complete. No source files modified.
+
+## Gender and dropout coding screen — 2026-11-18
+
+Read-only counts supplied by student, `n = 14,942`:
+- `Gender`: Female **8,931 (59.8%)**, Male **6,011 (40.2%)**.
+- `Dropout`: 0 = **2,974 (19.9%)**; 1 = **11,968 (80.1%)**.
+- No missing categories in these two tables (`useNA = "ifany"`).
+
+Original data dictionary in Pinheiro & Cavique (2021), Table 1, defines `Dropout` as **True when quitting**, False otherwise; Table 5 records **11,968 True / 2,974 False**. On this imported integer-coded file, **1 = dropout and 0 = not dropout**.
+Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/
+
+This is an outcome status at the documented finish date, **not an 80.1% annual churn rate**. Cohort and prediction-timing concerns remain. Next check cross-tabulation by Gender.
