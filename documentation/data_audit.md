@@ -487,3 +487,23 @@ Student ran read-only `grep("^(MOD|VIG|AEROB|LEIS|PHSTAT|BMI)", names(nhis_raw),
 The official 2024 NHIS Sample Adult summary and codebook define **`MODFREQW_A`** = moderate leisure-time physical activity frequency, **`VIGFREQW_A`** = vigorous leisure-time physical activity frequency, both standardized to times/week. **`PHSTAT_A`** = self-rated general health (ordinal category) and **`BMICAT_A` / `BMICATD_A`** = BMI category variables (categorical, not continuous BMI). Sources: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/Adult-summary.pdf and https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/Adult-codebook.pdf .
 
 These are **potentially independently measured variables**, but their presence alone does not establish |r| >= 0.20 with either strengthening outcome. `MODFREQW_A` and `VIGFREQW_A` also have special code values (0 = less than weekly, 94 = never, 95–99 = nonstandard response categories); raw numerical correlations would be invalid if those codes were treated literally as frequencies. `PHSTAT_A` and BMI category codes also require dictionary-grounded interpretation. No coding or predictor choices approved yet; next inspect exact raw response frequencies for the two aerobic frequency variables before proposing transformations.
+
+## 2024 NHIS moderate and vigorous activity frequency codes — 2026-11-19
+
+Student provided read-only frequency tables for `MODFREQW_A` and `VIGFREQW_A` in the 2024 Sample Adult dataset (`nhis_raw`). Aggregated totals:
+
+| Code grouping | CDC meaning | Moderate (`MODFREQW_A`) | Vigorous (`VIGFREQW_A`) |
+|---|---|---:|---:|
+| 0 | Less than once a week | 1,192 | 1,891 |
+| 1–28 | 1–28 times/week | 21,435 | 9,357 |
+| 94 | Never | 8,786 | 20,179 |
+| 95 | Extreme value | 170 | 64 |
+| 96 | Unable to do this activity | 132 | 199 |
+| 97 | Refused | 32 | 27 |
+| 98 | Not ascertained | 801 | 810 |
+| 99 | Don't know | 81 | 102 |
+| **Total** | | **32,629** | **32,629** |
+
+The student-observed counts match the published 2024 CDC Sample Adult codebook at printed pp.470 and 476 (https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/adult-codebook.pdf); the corresponding PDF printed variable names show MODFREQ_A and VIGFREQ_A, whereas the imported 2024 CSV has MODFREQW_A and VIGFREQW_A. This release-specific name difference should remain documented and not silently overwritten.
+
+Never (94), extreme value (95), unable (96), refused (97), not ascertained (98), and unknown (99) are not literal weekly counts. Code 0 means less than once per week (not necessarily never). Both predictors are separately measured domains, but more work is needed to define a valid numeric outcome and non-mechanically derived binary outcome. No conversion has been implemented and no correlations calculated yet. **Await student approval** to apply the same four-category, temporary grouping as for strengthening.
