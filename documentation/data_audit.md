@@ -585,3 +585,18 @@ Student ran the approved temporary in-memory binary coding for `MODFREQW_A` and 
 Both correlations **exceed the numerical threshold** for the preliminary binary target and relate independently measured survey domains, rather than a recode of the target itself. These are unweighted cross-sectional associations; no causal inference, membership demand, or retention benefit is established. This does NOT complete the full dataset scorecard: the required separate numeric target, its substantive predictors, year harmonization, survey weighting, and data dictionary/variable screening remain pending.
 
 Student supplied the final correlation table but not the two intermediate predictor-count tables from the same command. Source frequencies imply expected MOD binary counts 0=9,978;1=21,435;NA=1,216, and VIG counts 0=22,070;1=9,357;NA=1,202; verify actual objects in R before treating predictor coding as fully audited.
+
+## 2024 NHIS aerobic binary predictor counts verified — 2026-11-19
+
+Student supplied an explicit post-approval check of in-memory vectors `moderate_weekly` and `vigorous_weekly`:
+
+| Binary code | Moderate aerobic activity | Vigorous aerobic activity |
+|---|---:|---:|
+| 0 = less than weekly / never | 9,978 | 22,070 |
+| 1 = at least weekly | 21,435 | 9,357 |
+| NA = original special response 95–99 | 1,216 | 1,202 |
+| **Total** | **32,629** | **32,629** |
+
+All counts exactly match the independent expectations from previously verified 2024 source-code frequencies. This completes the binary *predictor construction* count checkpoint. Previously observed pairwise correlations with the approved preliminary binary strengthening twice-weekly target remain **r=+0.3486380** (moderate, n=31,238) and **r=+0.4517252** (vigorous, n=31,315), exceeding the professor's approximate absolute 0.20 threshold. The required separate numeric regression target and its correlations remain untested. No original data overwritten, cleaned, merged, or dropped.
+
+Next: inspect documented candidate **numeric outcome variables** and their special-value coding in the 2024 adult file before choosing a numeric target. Do not pick a variable based solely on high correlation, or use variables that are merely transformations of an identical binary target.
