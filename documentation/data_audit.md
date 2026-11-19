@@ -727,3 +727,13 @@ The student ran a **read-only** table of `nhis20_raw$AGEP_A` codes 85, 97, 98 an
 - Exactly **70** of the 31,568 original respondent rows have unavailable age (97/99); **31,498** have a usable age code of 18–85, including the top-coded age-85 category.
 
 This completes the **2020 age-code frequency verification**, not the whole cross-year comparability test. No R recoding, original-file editing, or harmonization was performed. Next is to inspect the corresponding 2022 sex/age code distributions.
+
+## 2022 NHIS sex and age special-code frequency reconciliation — 2026-11-19
+
+Student provided read-only `table(nhis22_raw$SEX_A, useNA="ifany")`: male (1) **12,598**; female (2) **15,050**; refused (7) **1**; don't know (9) **2**; total **27,651**. These exactly match the official 2022 CDC Sample Adult codebook's SEX_A table.
+
+Student also provided a read-only `AGEP_A` special-code frequency table: **85=1,002** (valid top-coded 85+), **97=59** (refused), **98=0** (not ascertained), **99=5** (don't know). These exactly match the 2022 CDC Sample Adult codebook's AGEP_A table. Hence unknown-age n=**64** (59+5), valid age-code n=**27,587** (27,651−64) including 85+.
+
+Source: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2022/Adult-codebook.pdf (SEX_A and AGEP_A tables, pages 17–18). Survey source code values are now cross-checked for all three years 2020, 2022 and 2024; the codes' agreement does not establish identical survey wording or year-to-year weights. No raw data altered, no appended file created.
+
+Next verification: confirm design-weight fields WTFA_A, PSTRAT and PPSU exist in all three survey-year datasets. These are relevant for survey-weighted descriptive trends and nationally representative inferences, though the course's required exploratory Pearson correlation screen was unweighted.
