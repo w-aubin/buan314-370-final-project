@@ -672,3 +672,16 @@ Next planned workflow: download and inspect **2020 NHIS** data as already approv
 ## 2020 NHIS source ZIP manifest — 2026-11-19
 
 User ran `unzip("data/raw/nhis/adult20csv.zip", list=TRUE)` and reported a **single archived member**: `adult20.csv`, uncompressed length **30,453,241 bytes**, ZIP entry timestamp **2022-08-12 13:45**. No README or codebook was bundled in this ZIP. Archive inspection was read-only and no CSV has yet been imported. CDC's official 2020 NHIS release page reports a revised Sample Adult Interview file released in **September 2022**, consistent with the ZIP entry's 2022 timestamp, but the timestamp alone does not prove release identity or file integrity. Source: https://www.cdc.gov/nchs/nhis/documentation/2020-nhis.html . The official 2020 Sample Adult codebook URL is https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2020/Adult-codebook.pdf and is needed to verify the revised variables and codes. Next student action is to download this codebook and store alongside the 2020 ZIP with a distinct year-label filename, preserving an unaltered reference copy.
+
+## 2020/2022/2024 NHIS source file availability — 2026-11-19
+
+Student ran `list.files("data/raw/nhis")` and verified the local source folder contains six files:
+
+- `Adult-codebook '20.pdf` (locally year-labeled 2020 codebook)
+- `adult-codebook '22.pdf` (locally year-labeled 2022 codebook)
+- `Adult-codebook '24.pdf` (locally year-labeled 2024 codebook)
+- `adult20csv.zip`
+- `adult22csv.zip`
+- `adult24csv.zip`
+
+These are the student's verified filenames; capitalization and single quotes matter if referenced in future scripts. Files being present does not alone validate their content or checksums. Already-verified 2020 ZIP member is `adult20.csv` (30,453,241 uncompressed bytes). Next: read-only base R import of `adult20.csv` within its ZIP and `dim()` check against the publisher's 31,568 sample-adult rows. No datasets have been appended or raw contents modified.
