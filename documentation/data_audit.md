@@ -773,3 +773,20 @@ Student ran `check_duration_codes()` across `MODMIN_A` and `VIGMIN_A` for the th
 The six row sums reconcile exactly to 31,568, 27,651, and 32,629, respectively. No numeric codes outside the source-documented 1–720 or 996–999 categories were observed. A substantial number of NA values remain because duration is asked for only part of the survey question universe; not every NA necessarily represents an error or participant who did zero activity. Totals across years count survey observations, not repeated measurements of the same individuals. This demonstrates preliminary coding compatibility only; questionnaire wording, study population, weighting, and other fields still require verification. Raw files remain unchanged; no rows removed and no year append executed.
 
 **Next:** Check the moderate and vigorous **frequency** variables (`MODFREQW_A`/`VIGFREQW_A`) across 2020 and 2022 using a compact raw-code screen, since 2024 was already audited. Never treat source codes 94–99 as literal exercise frequencies.
+
+## 2020 and 2022 NHIS aerobic frequency code screen — 2026-11-19
+
+Student supplied the read-only output of `check_frequency_codes()` for the original `MODFREQW_A` and `VIGFREQW_A` columns.
+
+| Year / measure | 0: less than weekly | 1–28: at least weekly | 94: never | 95–99: special | Missing NA | Other codes | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2020 moderate | 992 | 20,986 | 8,477 | 1,113 | 0 | 0 | **31,568** |
+| 2020 vigorous | 1,678 | 9,105 | 19,632 | 1,153 | 0 | 0 | **31,568** |
+| 2022 moderate | 928 | 17,915 | 7,669 | 1,139 | 0 | 0 | **27,651** |
+| 2022 vigorous | 1,536 | 7,925 | 17,044 | 1,146 | 0 | 0 | **27,651** |
+
+Each four-category sum exactly matches that year's original sample size, with **zero** missing raw frequency values and **zero** undocumented frequency codes. Prior 2024 codes were audited separately (2024 moderate: 1,192 / 21,435 / 8,786 / 1,216; 2024 vigorous: 1,891 / 9,357 / 20,179 / 1,202).
+
+**Interpretation:** The *observed coding structure* is consistent across all three years for strength, moderate, and vigorous frequency, and for moderate/vigorous duration. This does **not yet demonstrate** exact question wording, survey design comparability, year-specific weight treatment, or final model relevance. None of these descriptive summaries are survey-weighted national trends. The three raw annual dataframes have not been appended or altered.
+
+**Pending harmonization plan approval:** narrow to common relevant source columns (sex, age, activity frequencies, durations, WTFA_A, PSTRAT, PPSU), preserve source code values, add survey year and unique within-year row identifier, derive only approved in-memory age and activity group indicators, document all missingness and programmatic transformations, compare source versus appended row totals, and ensure survey year-specific PSU/stratum handling. Check questionnaire wording and any required other numeric/categorical predictors before writing final processing scripts.
