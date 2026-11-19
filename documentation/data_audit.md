@@ -511,3 +511,16 @@ Never (94), extreme value (95), unable (96), refused (97), not ascertained (98),
 ## Approval for exploratory moderate/vigorous frequency grouping — 2026-11-19
 
 Student explicitly approved an **in-memory, read-only** four-way grouping for **both** 2024 NHIS `MODFREQW_A` and `VIGFREQW_A`: code 94 = Never; code 0 = Less than weekly; codes 1–28 = At least weekly; codes 95–99 = Special response. Any unexpected code should be labeled `Other / undocumented`, never silently treated as zero. No original data changed and no new predictor/target or numerical imputation approved. Next: construct temporary vectors, verify counts against source frequencies and confirm each contains 32,629 observations. Only then consider converting valid categories into a binary participation indicator for an exploratory correlation screen, keeping special responses separate.
+
+## NHIS 2024 moderate/vigorous preliminary categorization — approved 2026-11-19
+
+The student explicitly approved applying the **same temporary, in-memory four-category mapping** to each of `MODFREQW_A` and `VIGFREQW_A`, independently:
+
+| Source values | Preliminary category |
+|---|---|
+| 94 | Never |
+| 0 | Less than once per week |
+| 1–28 | At least weekly |
+| 95–99 | Special responses (source codes preserved individually in raw data) |
+
+No records are to be dropped or rewritten in `nhis_raw`. These groups are for provisional descriptive/feasibility screening, not a finalized treatment of missingness or numeric frequency. In particular, category `0` means less than weekly, **not exactly zero** sessions. The next read-only code step creates two vectors in memory and confirms category counts sum to the 2024 sample n=32,629 before considering correlation. An independent numerical and binary prediction target, and treatment of special codes, still need student approval before modeling.
