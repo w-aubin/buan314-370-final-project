@@ -331,3 +331,17 @@ The student supplied the **within-sex percentage table** from the approved read-
 Female-minus-male: **-8.2 percentage points** for at least weekly; **+8.8 percentage points** for never. These percentages are **unweighted within recorded-sex groups**. They do not establish demand for a paid class, retention effects, or population rates. Very small sex code 7/9 groups (n=3, n=2), so do not interpret their percentages substantively.
 
 **Outstanding acceptance check:** The student has not yet supplied the **raw counts** from `print(strength_by_sex)`. Verify exact cell counts and that they sum to n=32,629 before recording this checkpoint as fully passed. No modifications to data, no final dataset selected, no model fitted.
+
+## NHIS preliminary strength-group count reconciliation — 2026-11-19
+
+Student ran `addmargins(strength_by_sex)` using the previously approved **in-memory** strength categories based on `STRFREQW_A`. Exact unweighted observed counts:
+
+| SEX_A | At least weekly (1–28) | Less than weekly (0) | Never (94) | Special response (95–99) | Total |
+|---|---:|---:|---:|---:|---:|
+| 1 Male | 6,062 | 482 | 7,911 | 530 | 14,985 |
+| 2 Female | 5,694 | 487 | 10,869 | 589 | 17,639 |
+| 7 Sex refused | 1 | 0 | 2 | 0 | 3 |
+| 9 Sex unknown | 0 | 1 | 1 | 0 | 2 |
+| **Total** | **11,757** | **970** | **18,783** | **1,119** | **32,629** |
+
+Row and column sums reconcile and match earlier separate original-code frequency tables. Women's unweighted at-least-weekly percentage ≈32.3% (5,694/17,639), men's ≈40.5% (6,062/14,985); female never ≈61.6% and male never ≈52.8%. These are **unweighted sample shares** rather than nationally representative estimates; correct weighting is required for population claims. The 95–99 special responses remain segregated; zero source rows modified or discarded. Next check is read-only inspection of `AGEP_A` codes before any age-group definition or stratification.
