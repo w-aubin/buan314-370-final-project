@@ -91,3 +91,15 @@ Student reported `summary(sports_raw$Age)`: **Min 0**, **Q1 19**, **Median 23**,
 According to Pinheiro and Cavique's published dictionary, `Age` is measured as of **2019-10-31 for non-dropouts**, or as of **EnrollmentFinish for dropouts**. It is not necessarily the age at enrollment or a valid earlier-date predictor. Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC8100056/ (Table 1).
 
 A recorded minimum of 0 requires investigating how many child records exist; do **not** interpret it as an error, delete, filter, or recode observations without student approval. Next: tabulate age under 18 and age exactly 0 by gender.
+
+## Under-18 age check — 2026-11-18
+
+Student's read-only `table(Gender = sports_raw$Gender, Under_18 = sports_raw$Age < 18)` and age-zero count:
+
+| Gender | Age >=18 | Age <18 | Total |
+|---|---:|---:|---:|
+| Female | 7,491 | 1,440 | 8,931 |
+| Male | 4,765 | 1,246 | 6,011 |
+| Total | 12,256 | 2,686 | 14,942 |
+
+`sum(sports_raw$Age == 0)` returned **19**. Under-18 records constitute approximately **18.0%** of total; female adults n = **7,491**. Source of age zero remains unexplained. No ages changed; no rows removed or filtered from underlying data. Next: read-only three-way tabulation by gender, age eligibility, and dropout.
