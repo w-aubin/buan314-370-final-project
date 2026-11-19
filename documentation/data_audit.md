@@ -296,3 +296,19 @@ Student ran the original-code cross-tabulation SEX_A against STRFREQW_A == 94:
 Unweighted within-sex never proportions: Female **61.6%**, Male **52.8%**, difference about **8.8 percentage points**. These are not survey-weighted national estimates. The FALSE column includes numeric strengthening responses, code 0 (less than weekly), and missing/unknown response codes 95–99. Do not label all FALSE cases active participants. No conclusions about willingness to buy a service or membership retention. No data changes.
 
 Next: inspect sex-specific special codes 95–99 without editing records.
+
+## NHIS special strengthening-frequency codes by sex — 2026-11-19
+
+Student's read-only output of `table(nhis_raw$SEX_A, nhis_raw$STRFREQW_A)[, as.character(95:99), drop=FALSE]`:
+
+| SEX_A | 95 Extreme | 96 Unable | 97 Refused | 98 Not ascertained | 99 Don't know | Sum |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 Male | 28 | 59 | 18 | 399 | 26 | **530** |
+| 2 Female | 33 | 99 | 14 | 416 | 27 | **589** |
+| 7 Refused sex | 0 | 0 | 0 | 0 | 0 | 0 |
+| 9 Don't know sex | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Total** | **61** | **158** | **32** | **815** | **53** | **1,119** |
+
+Totals exactly match the official 2024 NHIS Sample Adult frequency table: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/Adult-codebook.pdf . The five codes are not literal sessions per week and must not be used numerically as 95–99. Code 96 represents respondents unable to participate and is a distinct substantive group, not a technical missing answer; preserve it separately for descriptive context. No coding decisions have been applied or rows removed.
+
+**Documentation check to resolve:** The current CDC 2024 PDF's printed weekly-strengthening recode is named `STRFREQ_A`, but the student's imported `adult24.csv` column is `STRFREQW_A`. Frequency distributions match exactly. Check release-specific naming before finalizing the codebook. Proposed next decision: for an exploratory grouping, preserve three known-frequency categories `94=never`, `0=less than weekly`, `1–28=at least weekly`; hold `95–99` apart as non-standard responses pending student's approval. Preserve source data.
