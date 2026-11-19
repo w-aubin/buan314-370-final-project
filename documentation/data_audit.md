@@ -755,3 +755,21 @@ Student supplied R read-only `check_survey_design` output:
 No missing or nonpositive weights and no missing stratum/PSU codes were found. The distinct `PPSU` count is the count of *code values overall*, not necessarily the number of unique sampling units across all strata or all years. This screen does **not** validate combined-year weights or survey design. When combining years, identify strata and PSUs nested by survey year as appropriate; verify against the NCHS methodological guidance before population-level inference. No rows filtered or altered; original ZIPs untouched.
 
 **Next read-only check**: verify common availability of candidate numeric outcomes `MODMIN_A`, `VIGMIN_A`, separate aerobic frequencies `MODFREQW_A`, `VIGFREQW_A`, and the already confirmed strengthening outcome `STRFREQW_A` across 2020/2022/2024. Presence alone does not prove coding consistency.
+
+## 2020/2022/2024 NHIS duration-code audit verified — 2026-11-19
+
+Student ran `check_duration_codes()` across `MODMIN_A` and `VIGMIN_A` for the three raw annual Sample Adult files and supplied the following full read-only results.
+
+| Duration variable | Valid 1–720 | 996 extreme | 997 refused | 998 not ascertained | 999 don't know | NA | Other codes | Row sum |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| MODMIN_A 2020 | 21,982 | 22 | 3 | 8 | 109 | 9,444 | 0 | 31,568 |
+| VIGMIN_A 2020 | 10,779 | 19 | 0 | 2 | 40 | 20,728 | 0 | 31,568 |
+| MODMIN_A 2022 | 18,868 | 4 | 1 | 3 | 80 | 8,695 | 0 | 27,651 |
+| VIGMIN_A 2022 | 9,464 | 3 | 2 | 1 | 39 | 18,142 | 0 | 27,651 |
+| MODMIN_A 2024 | 22,687 | 12 | 5 | 6 | 87 | 9,832 | 0 | 32,629 |
+| VIGMIN_A 2024 | 11,265 | 3 | 1 | 2 | 41 | 21,317 | 0 | 32,629 |
+| **Valid duration responses, sum over years** | **Moderate 63,537; Vigorous 31,508** | | | | | | | |
+
+The six row sums reconcile exactly to 31,568, 27,651, and 32,629, respectively. No numeric codes outside the source-documented 1–720 or 996–999 categories were observed. A substantial number of NA values remain because duration is asked for only part of the survey question universe; not every NA necessarily represents an error or participant who did zero activity. Totals across years count survey observations, not repeated measurements of the same individuals. This demonstrates preliminary coding compatibility only; questionnaire wording, study population, weighting, and other fields still require verification. Raw files remain unchanged; no rows removed and no year append executed.
+
+**Next:** Check the moderate and vigorous **frequency** variables (`MODFREQW_A`/`VIGFREQW_A`) across 2020 and 2022 using a compact raw-code screen, since 2024 was already audited. Never treat source codes 94–99 as literal exercise frequencies.
