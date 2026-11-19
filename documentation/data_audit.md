@@ -159,3 +159,16 @@ Student supplied read-only R summaries (subset `sports_raw$Age >= 18`, n=12,256;
 According to the publisher's dictionary, `AverageFrequency` is the average frequency of visits to the club per week during the full enrollment period and `AttendedClassesAverage` is average number of classes attended per week. The latter's 75th percentile equals zero, indicating a large mass at zero; an exact zero count has not yet been established. The former shows much more variation. Neither is yet chosen as the numeric target, and both summarize activity during full enrollment, which creates timing concerns for forecasting a future dropout outcome.
 
 **Next read-only check:** count zero and positive values for each outcome in the approved adult analytical population before selection.
+
+## Zero-versus-positive participation counts — adult scope (student's R results)
+
+From `sapply(adult_numeric, function(x) c(Zero=sum(x==0), Above_Zero=sum(x>0), Percent_Zero=round(mean(x==0)*100,1)))` for **12,256 records with recorded Age >= 18**:
+
+| Variable | Equal to zero | Greater than zero | Reported % zero | Calculated % positive |
+|---|---:|---:|---:|---:|
+| AverageFrequency | 1 | 12,255 | 0.0% (rounded; actual ~0.0082%) | ~99.99% |
+| AttendedClassesAverage | 10,114 | 2,142 | 82.5% | 17.5% |
+
+These are recorded **average weekly visit/class measures** over a member's enrollment, not evidence that the same facilities or program types were available or that zero attendance represents a lack of demand. Exact zero based on imported numeric values. No records removed; not yet testing correlations or prediction timing. In particular, retrospective averages from full enrollment are potentially contemporaneous or post-outcome measures if used to predict future dropout.
+
+Next proposed read-only analysis: stratify mean and median of both attendance measures by observed Dropout status, with n, as a *descriptive diagnostic* only (not causal and not yet a leakage-safe predictor check).
