@@ -235,3 +235,11 @@ Student supplied the following `cor()` results for 12,256 records with `Age >= 1
 Student ran `table(adult_data$DanceActivities, useNA="ifany")` and received only `0 = 12,256`. In the adult analytical scope, the recorded `DanceActivities` activity flag is **identically zero**, with zero variance. This explains the undefined (`NA`) Pearson correlation with both target candidates in the earlier correlation screen. It does *not* indicate a data missingness problem, a software malfunction, or the lack of demand for dance activities in other facilities. Exclude the constant variable from any future adult-sample correlation/multivariable predictor candidates, **without deleting or modifying the raw column**.
 
 The Sport Services candidate remains under evaluation: highly retrospective/derived variables can satisfy |r| >=0.20 numerically, but the screened basic member and activity variables have not. To compare fairly with the student's other candidate, next investigate the CDC's 2024 NHIS Sample Adult public-use CSV (`adult24csv.zip`; official publication page https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html). This is a different business proxy (physical activity, not member retention), and no selection is made.
+
+## NHIS 2024 ZIP README inspection — 2026-11-18
+
+Student read `readme.txt` directly from `data/raw/adult24csv.zip` via an R `unz()` connection (read-only). ZIP manifest: `adult24.csv` = 32,782,569 bytes; `readme.txt` = 2,644 bytes. README states **32,629 observations** in 2024 Sample Adult file.
+
+Publisher warns that some NHIS variables have sparse or out-of-universe responses, which can cause data-type/length inference problems when software looks only at early rows. For **base R**, README specifically recommends `read.csv("adult24.csv", stringsAsFactors=FALSE)`, which inspects the full file before assigning variable attributes. If using `readr::read_csv`, README recommends `guess_max=32629`. Publisher also advises comparing observed frequencies with official codebook frequencies, especially sparse columns. Empty/not-asked codes must be considered in later missingness checks.
+
+No NHIS CSV loaded or modified yet. Next: use `read.csv()` on an `unz()` connection and compare `dim()` against the documented 32,629 rows.
