@@ -55,7 +55,9 @@ read_sample_adult_zip <- function(year) {
          "; found ", length(csv_names), ". Inspect this archive before proceeding.")
   }
 
-  connection <- unz(zip_path, csv_names[[1]])
+  # Open the ZIP connection explicitly. read.csv() otherwise opens and closes
+  # an initially unopened connection, making a second close() invalid.
+  connection <- unz(zip_path, csv_names[[1]], open = "r")
   on.exit(close(connection), add = TRUE)
 
   # Force HHX to remain text; let other original CSV fields keep their
