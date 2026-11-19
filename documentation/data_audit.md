@@ -412,3 +412,21 @@ Student ran `table(Age_Group = nhis_age_group, Sex = nhis_raw$SEX_A, useNA = "if
 All 32,629 observations accounted for; 32,577 valid age-band codes, 52 with special age values. Female usable-age n=17,609, male usable-age n=14,963. No changes to the source data; `nhis_age_group` remains an in-memory categorical vector. Source company-provided age distribution uses all club memberships; do not directly equate to female-only NHIS subgroup. Original company reported 45–59 and 55+ overlap; student's 45–54 interpretation remains explicitly provisional. Survey data unweighted.
 
 **Next read-only question:** Tabulate the existing approved strength-category vector for female respondents by `nhis_age_group`, including unknown ages; verify counts before computing conditional percentages.
+
+## Female NHIS strength-training response categories by provisional business age bands — 2026-11-19
+
+User supplied the read-only R `addmargins(female_strength_by_age)` table, using previously approved temporary strength categories (94 never; 0 less than weekly; 1–28 at least weekly; 95–99 special) and provisional company age bands (18–24;25–34;35–44;45–54;55+). Unknown age stays visible.
+
+| Provisional age band | At least weekly | Less than weekly | Never | Special response | Total |
+|---|---:|---:|---:|---:|---:|
+| 18–24 | 398 | 62 | 499 | 23 | 982 |
+| 25–34 | 1,017 | 122 | 1,229 | 86 | 2,454 |
+| 35–44 | 1,077 | 107 | 1,411 | 76 | 2,671 |
+| 45–54 | 824 | 66 | 1,401 | 70 | 2,361 |
+| 55+ | 2,368 | 130 | 6,314 | 329 | 9,141 |
+| Unknown age | 10 | 0 | 15 | 5 | 30 |
+| **Total** | **5,694** | **487** | **10,869** | **589** | **17,639** |
+
+Column totals match earlier female counts exactly. Unweighted at-least-weekly fractions of *all* women in each known age band (including special response cases in denominators) are approximately 40.5%, 41.4%, 40.3%, 34.9%, and 25.9%, respectively. These are exploratory percentages, not survey-weighted national population estimates. The 45–54 analytical category remains a **student-approved provisional correction** to the operator's overlapping reported labels; do not present it as officially confirmed.
+
+Next: compute entire within-age-group percent table in R from `female_strength_by_age` using `prop.table(..., margin=1)`, showing no claims of program demand or effectiveness. The eventual report should use NHIS survey weights and acknowledge general population versus health-club membership differences. No original NHIS data edited or processed file written.
